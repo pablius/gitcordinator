@@ -24,7 +24,7 @@ body {
 }
 
 hr {
-	display: none;
+	margin: 2em 0;
 }
 
 img {
@@ -75,6 +75,10 @@ ul, ol {
 
 li {
 	margin-bottom: .5em;
+}
+
+li p {
+	margin-bottom: 0;
 }
 
 input {
@@ -218,7 +222,7 @@ input {
 }
 
 .module-header {
-	margin: 0 0 2em 0;
+	margin: 0 0 1em 0;
 	clear: both;
 	overflow: hidden;
 }
@@ -249,7 +253,7 @@ input {
 }
 
 .story {
-	padding: 1em 0;
+	padding: 1em .5em;
 	border-bottom: 1px solid #ddd;
 	clear: both;
 	overflow: hidden;
@@ -333,6 +337,10 @@ h4.large {
 	margin: 0;
 }
 
+.story .description .details li p {
+	line-height: 1.4;
+}
+
 .story .description .details li a {
 	text-decoration: none;
 	color: #2C7FA2;
@@ -391,7 +399,7 @@ table.common label {
 }
 
 table.common input, table.common textarea {
-	width: 70%;
+	width: 95%;
 	margin: 0 0 .5em 0;
 	padding: 2px;
 	font-family: Monaco, "Courier New", fixed;
@@ -421,6 +429,49 @@ table.common p.submit a {
 
 table.common p.submit a:hover {
 	text-decoration: underline;
+}
+
+table.login tr {
+	border: 0;
+}
+
+/*Two columns*/
+
+/*#left-col {
+	width: 49%;
+	float: left;
+	clear: both;
+	overflow: hidden;
+}
+
+#right-col {
+	margin-left: 51%;
+	overflow: hidden;
+}
+
+#first-col {
+	
+}*/
+
+#left-content {
+	width: 66%;
+	margin-right: 2.4em;
+	float: left;
+}
+
+#sidebar {
+	margin-left: 68.2%;
+}
+
+.section {
+	margin: 0 0 2em 0;
+	padding: 1.5em;
+	border: 1px solid #ddd;
+	-moz-border-radius: 15px;
+}
+
+#sidebar .section p {
+	line-height: 1.6;
 }
 
 /* --------------------------------- [ General classes ] */
