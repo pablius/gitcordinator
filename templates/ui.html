@@ -62,7 +62,7 @@
 			
 			<h3>Forms</h3>
 			
-			<p>A form is made using a <code>TABLE</code>.</p>
+			<p>A simple form.</p>
 			
 			<form action="forms_submit" method="get" accept-charset="utf-8">
 				<div class="field">
@@ -142,63 +142,20 @@
 				</div>
 				
 				<div class="field">
-					<div class="col span-6 nudge-2">
+					<div class="col last span-6 nudge-2">
 						<p class="submit"><input type="submit" name="some_name" value="Save" id="some_name" class="submit" /> or <a href="">dismiss</a></p>
 						<p>More information, if needed, goes here.</p>
 					</div>
 				</div>
 			</form>
-			
-			<!-- <form action="forms_submit" method="get" accept-charset="utf-8">
-				<table class="common">
-					<tr>
-						<th>
-							<label for="relevance">Relevance</label>
-							<p class="tooltip">A simple description of the label</p>
-						</th>
-						<td>
-							<input type="text" name="relevance" value="" id="relevance" />
-							<p class="tooltip">For example: 100</p>
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<label for="estimate">Estimate</label>
-						</th>
-						<td>
-							<input type="text" name="estimate" value="" id="estimate" />
-							<p class="tooltip">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<label for="how-to-demo">How to demo</label>
-							<p class="tooltip">A simple description of the label that uses two lines in length</p>
-						</th>
-						<td><textarea name="how-to-demo" id="how-to-demo" rows="10" cols="10"></textarea></td>
-					</tr>
-					<tr>
-						<th><label for="description">Description</label></th>
-						<td><textarea name="description" id="description" rows="10" cols="10"></textarea></td>
-					</tr>
-					<tr>
-						<th />
-						<td>
-							<p class="submit"><input type="submit" name="some_name" value="Save" id="some_name" class="submit" /> or <a href="">dismiss</a></p>
-							<p>More information, if needed, goes here.</p>
-						</td>
-					</tr>
-				</table>
-			</form> -->
-			
+
 			<hr />			
 			
 			<h3>Module: Story</h3>
 			
 			<p>Stories are build using a series of <code>DIV</code>s and <code>UL</code>s.</p>
 			
-			<div class="story" style="width: 50%">
+			<div class="story">
 				<div class="story-meta">
 					<ul>
 						<li class="priority"><a href="">3</a></li>
@@ -219,6 +176,90 @@
 							<li><p><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></p></li>
 							<li><p><a href="" class="story-edit-button" title="Edit this story">Edit</a></p></li>
 						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="story">
+				<div class="story-meta">
+					<ul>
+						<li class="priority"><a href="">128</a></li>
+					</ul>
+				</div>
+				
+				<div class="story-description">
+					<div class="story-title">
+						<h4 class="small"><span class="editable" title="Click to edit">Recode page templates</span></h4>
+						
+						<ul>
+							<li><p><a href="" class="drag-button" title="Drag this story">Click to drag</a></p></li>
+						</ul>
+					</div>
+					
+					<div class="story-details">
+						<ul>
+							<li><p><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a></p></li>
+							<li><p><a href="" class="story-edit-button" title="Edit this story">Edit</a></p></li>
+						</ul>
+						
+						<form action="forms_submit" method="get" accept-charset="utf-8">
+							<div class="field">
+								<div class="col span-1">
+									<label for="status">Status</label>
+								</div>
+								<div class="col last span-3">
+									<select id="status" name="status">
+										<option>Start</option>
+										<option>Finish</option>
+										<option>Deliver</option>
+										<option>Accept</option>
+										<option>Cancel</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="relevance">Relevance</label>
+								</div>
+								<div class="col last span-3">
+									<input type="text" name="relevance" value="" id="relevance" />
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="estimate">Estimate</label>
+								</div>
+								<div class="col last span-3">
+									<input type="text" name="estimate" value="" id="estimate" />
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="how-to-demo">How to demo</label>
+								</div>
+								<div class="col last span-3">
+									<textarea name="how-to-demo" id="how-to-demo" rows="10" cols="10"></textarea>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="description">Description</label>
+								</div>
+								<div class="col last span-3">
+									<textarea name="description" id="description" rows="10" cols="10"></textarea>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-3 nudge-1">
+									<p class="submit"><input type="submit" name="some_name" value="Save" id="some_name" class="submit" /> or <a href="">dismiss</a></p>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
