@@ -1,0 +1,108 @@
+/*
+	Description: Grid 960px Master Stylesheet
+	Media: Screen
+	Version: Jul 15 2009
+	Author: Rodrigo Galindez
+	Author URI: http://www.rodrigogalindez.com
+*/
+
+.col {
+	margin-right: 2.4em;
+	float: left;
+}
+
+.last {
+	margin-right: 0;
+}
+
+.span-1 {
+	width: 5.8em;
+}
+
+.nudge-1 {
+	padding-left: 8.2em;
+}
+
+.span-2 {
+	width: 14em;
+}
+
+.nudge-2 {
+	padding-left: 16.4em;
+}
+
+.span-3 {
+	width: 22.2em;
+}
+
+.nudge-3 {
+	padding-left: 24.6em;
+}
+
+.span-4 {
+	width: 30.4em;
+}
+
+.nudge-4 {
+	padding-left: 32.8em;
+}
+
+.span-5 {
+	width: 38.6em;
+}
+
+.nudge-5 {
+	padding-left: 41em;
+}
+
+.span-6 {
+	width: 46.8em;
+}
+
+.nudge-6 {
+	padding-left: 49.2em;
+}
+
+.span-7 {
+	width: 55em;
+}
+
+.nudge-7 {
+	padding-left: 57.4em;
+}
+
+.span-8 {
+	width: 63.2em;
+}
+
+.nudge-8 {
+	padding-left: 65.6em;
+}
+
+.span-9 {
+	width: 71.4em;
+}
+
+.nudge-9 {
+	padding-left: 73.8em;
+}
+
+.span-10 {
+	width: 79.6em;
+}
+
+.nudge-10 {
+	padding-left: 82em;
+}
+
+.span-11 {
+	width: 87.8em;
+}
+
+.nudge-11 {
+	padding-left: 90.2em;
+}
+
+.span-12 {
+	width: 96em;
+}

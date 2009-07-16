@@ -12,15 +12,15 @@
 
 <div id="session">
 	<ul>
-		<li class="account"><a href="" class="ok">&laquo; upgrade your account</a></li>
-		<li><a href="">rodrigogalindez</a></li>
-		<li><a href="">people</a></li>
-		<li><a href="">project settings</a></li>
+		<li><a href="" class="ok">&laquo; upgrade your account</a></li>
 		<li><a href="">logout</a></li>
+		<li><a href="">project settings</a></li>
+		<li><a href="">people</a></li>		
+		<li><a href="">rodrigogalindez</a></li>
 	</ul>
 </div>
 
-<div id="wrapper">
+<div id="wrapper" class="span-12">
 	<h1><span class="editable" title="Click to edit">Polaris</span></h1>
 	
 	<div id="nav">
@@ -65,6 +65,91 @@
 			<p>A form is made using a <code>TABLE</code>.</p>
 			
 			<form action="forms_submit" method="get" accept-charset="utf-8">
+				<div class="field">
+					<div class="col span-2">
+						<label for="status">Status</label>
+					</div>
+					<div class="col last span-6">
+						<select id="status" name="status">
+							<option>Start</option>
+							<option>Finish</option>
+							<option>Deliver</option>
+							<option>Accept</option>
+							<option>Cancel</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<span class="label">Sex</span>
+					</div>
+					
+					<div class="col last span-6">
+						<input type="checkbox" name="sex" value="" id="male" class="checkbox" /><label for="male" class="checkbox">Male</label>
+						<input type="checkbox" name="sex" value="" id="female" class="checkbox" /><label for="female" class="checkbox">Female</label>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<span class="label">Drink</span>
+					</div>
+					
+					<div class="col last span-6">
+						<input type="radio" name="drink" value="" id="coca" class="radio" /><label for="coca" class="radio">Coca-Cola</label>
+						<input type="radio" name="drink" value="" id="pepsi" class="radio" /><label for="pepsi" class="radio">Pepsi</label>
+					</div>
+				</div>
+				<div class="field">
+					<div class="col span-2">
+						<label for="relevance">Relevance</label>
+						<p class="tooltip">A simple description of the label</p>
+					</div>
+					<div class="col last span-6">
+						<input type="text" name="relevance" value="" id="relevance" />
+						<p class="tooltip">For example: 100</p>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<label for="estimate">Estimate</label>
+					</div>
+					<div class="col last span-6">
+						<input type="text" name="estimate" value="" id="estimate" />
+						<p class="tooltip">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<label for="how-to-demo">How to demo</label>
+						<p class="tooltip">One line length</p>
+					</div>
+					<div class="col last span-6">
+						<textarea name="how-to-demo" id="how-to-demo" rows="10" cols="10"></textarea>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<label for="description">Description</label>
+					</div>
+					<div class="col last span-6">
+						<textarea name="description" id="description" rows="10" cols="10"></textarea>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-6 nudge-2">
+						<p class="submit"><input type="submit" name="some_name" value="Save" id="some_name" class="submit" /> or <a href="">dismiss</a></p>
+						<p>More information, if needed, goes here.</p>
+					</div>
+				</div>
+			</form>
+			
+			<!-- <form action="forms_submit" method="get" accept-charset="utf-8">
 				<table class="common">
 					<tr>
 						<th>
@@ -105,7 +190,7 @@
 						</td>
 					</tr>
 				</table>
-			</form>
+			</form> -->
 			
 			<hr />			
 			
@@ -114,19 +199,19 @@
 			<p>Stories are build using a series of <code>DIV</code>s and <code>UL</code>s.</p>
 			
 			<div class="story">
-				<div class="meta">
+				<div class="story-meta">
 					<ul>
-						<li class="priority"><a href="">11</a></li>
+						<li class="priority"><a href="">3</a></li>
 						<li><a href="">Accept</a></li>
 					</ul>
 				</div>
 				
-				<div class="description">
-					<div class="title">
+				<div class="story-description">
+					<div class="story-title">
 						<h4 class="medium"><span class="editable" title="Click to edit">Login page needs remember me box</span></h4>
 					</div>
 					
-					<div class="details">
+					<div class="story-details">
 						<ul>
 							<li><p><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a> <a href="" class="quick-edit" title="Click to edit persons and tags for this story">quick edit</a></p></li>
 						</ul>
@@ -134,7 +219,7 @@
 				</div>
 			</div>
 			
-			<div class="story z">
+			<div class="story z hide">
 				<div class="meta">
 					<ul>
 						<li class="priority"><a href="">11</a></li>
@@ -156,7 +241,7 @@
 				</div>
 			</div>
 			
-			<div class="story">
+			<div class="story hide">
 				<div class="meta">
 					<ul>
 						<li class="priority"><a href="">11</a></li>
@@ -199,37 +284,25 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<hr />
 			
-			<h3>Layouts</h3>
+			<h3>Module: New Story</h3>
 			
-			<p>Two columns.</p>
-			
-			<div id="left-col">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<div class="new-story">
+				<form action="ui_submit" method="get" accept-charset="utf-8">
+					<div class="field">
+						<div class="col span-4">
+							<input type="text" name="some_name" value="" id="some_name" />
+							<p class="tooltip">Example: "Redesign login form @lebowsky #inteface #design". <a href="">More help</a>.</p>
+						</div>
+				
+						<div class="col last span-3">
+							<input type="submit" name="some_name" value="Add story" id="some_name" class="submit" />
+						</div>
+					</div>
+				</form>
 			</div>
-			
-			<div id="right-col">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-			
-			<p>Three columns.</p>
-			
-			<div id="first-col">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-			
-			<div id="second-cold">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-			
-			<div id="third-cold">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-			
-			<p>Three columns.</p>
-			
 		</div>
 	</div>
 </div>
