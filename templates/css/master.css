@@ -650,3 +650,7 @@ h4.large, a.large {
 .no-border {
 	border: 0;
 }
+
+.no-padding {
+	padding: 0;
+}
