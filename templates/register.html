@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Templates</title>
+	<link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="master" charset="utf-8">
+</head>
+
+<body>
+
+<div id="wrapper" class="span-12">
+	<h1>App name</h1>
+	
+	<div id="inner-wrapper">
+		<div id="content-wrapper">
+			<h2>Sign up for a new account</h2>
+			
+			<form action="forms_submit" method="get" accept-charset="utf-8">
+				<div class="field no-border">
+					<div class="col span-2">
+						<label for="username">Username</label>
+					</div>
+					<div class="col last span-3">
+						<input type="text" name="username" value="" id="username" />
+					</div>
+				</div>
+				
+				<div class="field no-border">
+					<div class="col span-2">
+						<label for="password">Password</label>
+					</div>
+					<div class="col last span-3">
+						<input type="password" name="password" value="" id="password" />
+					</div>
+				</div>
+				
+				<div class="field no-border">
+					<div class="col span-2">
+						<label for="password-confirm">Confirm your password</label>
+					</div>
+					<div class="col last span-3">
+						<input type="password" name="password-confirm" value="" id="password-confirm" />
+					</div>
+				</div>
+				
+				<div class="field no-border">
+					<div class="col span-2">
+						<label for="timezone">Time Zone</label>
+					</div>
+					<div class="col last span-3">
+						<select id="timezone" name="timezone">
+							<option>Argentina (GMT -3)</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="field no-border">
+					<div class="col last span-4 nudge-2">
+						<input type="checkbox" name="sex" value="" id="male" class="checkbox" /><label for="male" class="checkbox">I agree to the Terms &amp; Conditions</label>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col last span-4 nudge-2">
+						<a href="setup-1.html" class="button">Sign up</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+	
+	<div id="footer-wrapper" style="display: none">
+		<div id="footer">
+			<p class="copyright">Copyright © 2009, ourappname. All rights reserved.</p>
+			<p class="copyright"><a href="">Privacy Policy</a>. <a href="">Terms and Conditions</a>.</p>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -578,7 +578,7 @@ dl.person a:hover {
 }
 
 #setup-wrapper table {
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	margin-top: 1em;
 	text-align: left;
@@ -598,6 +598,11 @@ dl.person a:hover {
 #setup-wrapper span {
 	display: block;
 	margin: .3em 0 0 0;
+	font-size: 1.8em;
+}
+
+#setup-wrapper input {
+	font-family: Helvetica, Arial, Verdana, sans-serif;
 	font-size: 1.8em;
 }
 
@@ -718,4 +723,23 @@ h4.large, a.large {
 
 .no-padding {
 	padding: 0;
+}
+
+.button {
+	display: block;
+	width: 10em;
+	padding: 8px;
+	margin: 0 auto;
+	font-size: 1.4em;
+	vertical-align: middle;
+	color: #fff !important;
+	text-align: center;
+	background: #76AA00;
+	-moz-border-radius: 15px;
+}
+
+.amp {
+	font-family: Baskerville, Georgia, "Times New Roman", serif;
+	font-style: italic;
+	font-weight: normal;
 }
