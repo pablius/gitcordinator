@@ -545,6 +545,62 @@ dl.person a:hover {
 	text-decoration: underline;
 }
 
+#setup-wrapper {
+	text-align: center;
+	clear: both;
+}
+
+#setup-wrapper a {
+	color: #2C7FA2;
+	text-decoration: none;
+}
+
+#setup-wrapper a:hover {
+	text-decoration: underline;
+}
+
+#setup-wrapper h2 {
+	font-size: 1.3em;
+}
+
+#setup-wrapper h3 {
+	margin: 0 0 1em 0;
+}
+
+#setup-wrapper h2 strong {
+	font-size: 2.4em;
+	vertical-align: middle;
+}
+
+#setup-wrapper h2 small {
+	font-size: 1.3em;
+	vertical-align: middle;
+}
+
+#setup-wrapper table {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 1em;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+#setup-wrapper th {
+	padding: .5em;
+	text-align: left;
+}
+
+#setup-wrapper td {
+	padding: .5em;
+	vertical-align: top;
+}
+
+#setup-wrapper span {
+	display: block;
+	margin: .3em 0 0 0;
+	font-size: 1.8em;
+}
+
 #footer-wrapper {
 	margin: 0 0 3em 0;
 	border-top: 1px solid #ddd;
