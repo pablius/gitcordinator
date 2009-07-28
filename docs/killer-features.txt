@@ -1,4 +1,4 @@
-Killer Features
+﻿Killer Features
 
 1. Story based (agregar comentarios y posibilidad de convertirlos en substorias con relacion)
 2. SVN

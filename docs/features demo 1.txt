@@ -1,0 +1,13 @@
+- creacion de la cuenta -> solo el paso 3 para que agregue la 1er historia.
+- dashboard es dragable.
+- editar la historia en el dashboard
+- cuando clickeas en numero, va a una pag con el codigo..(esta la tiene que hacer galindez, como la de github)
+- lista de people
+- codigo q interprete people y tags para una historia
+- enviar un invite (falta mail q diga invita...)
+- modificar mi usuario (falta pantalla editar usuario: usuario,clave,mail,twitter)
+- pantalla pending task para un usuario/o por tag (dibujar pantalla con la nubecita de tags, y la de pending tasks para un usuario)
+- mensajes (falta pantalla tipo timeline de twitter)
+- link para ver previous sprints
+- listado de sprints
+- listado de tasks en un sprint
