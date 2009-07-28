@@ -33,7 +33,7 @@
 	
 	<div id="inner-wrapper">
 		<div id="page-header">
-			<h2>People</h2>
+			<h2>My profile</h2>
 			
 			<ul>
 				<li><a href="">Add new person</a></li>
@@ -42,46 +42,40 @@
 		
 		<div id="content-wrapper">
 			<div class="col span-8">
-				<dl class="person">
-					<dt><img src="images/avatar.png" alt="Avatar" /></dt>
-					<dd><p><a href="">@pablomicolini</a><br />Pablo Micolini</p></dd>
-					<dd><p>Online developer and entrepreneur. President at Nutus.</p></dd>
-				</dl>
+				<h3>Change your password</h3>
 				
-				<dl class="person z">
-					<dt><img src="images/avatar.png" alt="Avatar" /></dt>
-					<dd><p><a href="">@pablomicolini</a><br />Pablo Micolini</p></dd>
-					<dd><p>Online developer and entrepreneur. President at Nutus.</p></dd>
-				</dl>
-				
-				<dl class="person">
-					<dt><img src="images/avatar.png" alt="Avatar" /></dt>
-					<dd><p><a href="">@pablomicolini</a><br />Pablo Micolini</p></dd>
-					<dd><p>Online developer and entrepreneur. President at Nutus.</p></dd>
-				</dl>
+				<form action="forms_submit" method="get" accept-charset="utf-8">
+					<div class="field">
+						<div class="col span-2 align-right">
+							<label for="username">Username</label>
+						</div>
+						<div class="col last span-3">
+							<input type="text" name="username" value="" id="username" />
+						</div>
+					</div>
+					
+					<div class="field">
+						<div class="col span-2 align-right">
+							<label for="password">Password</label>
+						</div>
+						<div class="col last span-3">
+							<input type="password" name="password" value="" id="password" /> <p class="tooltip"><a href="">Forgot password?</a></p>
+						</div>
+					</div>
+					
+					<div class="field">
+						<div class="col last span-4 nudge-1">
+							<p class="submit"><input type="submit" name="some_name" value="Login" id="some_name" class="submit" /> or <a href="">sign up for a free account</a></p>
+						</div>
+					</div>
+				</form>
 			</div>
 			
 			<div class="col last span-4">
 				<div class="section">
-					<h3>Add a new person</h3>
+					<h3>Example section</h3>
 					
-					<table>
-						<th>
-							<input type="text" name="some_name" value="" id="some_name" />
-							<p class="tooltip">Example: pablius@gmail.com </p>
-						</th>
-						<td>
-							<input type="submit" name="some_name" value="Add" id="some_name" class="submit" />
-						</td>
-					</table>
-				</div>
-				
-				<div class="section">
-					<h3>Recent activity</h3>
-					
-					<div class="tags">
-						<p><a href="" class="small">@rodrigogalindez</a> <a href="" class="large">@pablius</a> <a href="" class="x-small">@gonzalocasas</a> <a href="" class="medium">@melocotoncita</a> <a href="" class="large">@lebowski</a></p>
-					</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 			</div>
 		</div>

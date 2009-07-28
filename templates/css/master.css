@@ -412,7 +412,7 @@ label {
 
 .field {
 	padding: 1em;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px dotted #ddd;
 	clear: both;
 	overflow: hidden;
 }
@@ -742,4 +742,8 @@ h4.large, a.large {
 	font-family: Baskerville, Georgia, "Times New Roman", serif;
 	font-style: italic;
 	font-weight: normal;
+}
+
+.align-right {
+	text-align: right !important;
 }
