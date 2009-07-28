@@ -1,0 +1,38 @@
+Features:
+
+Pivotal Tracker: identificamos que no tiene jerarquias para historias (similar a assembla.com).
+
+Mingle: (http://mingle.thoughtworks.com/) identificamos un arbol para las historias: esto se podría usar como una feature para mostrar las historias y su progreso.
+
+Assembla: Tienen un burnout chart que sería bueno implementar. Y además tienen subcategorías para historias. "Batch update" estaría interesante si estuviera puesto directamente en la lista de tickets principal.
+
+Zendesk: Sería bueno tener una forma de ingresar las historias tipo stikkit (similar a una linea de comandos en donde la app interprete luego lo que se escribio). La app también tendria que poder interpretar la informacion de cada commit, y asociarlos a una historia en particular. Esta interfaz debería ser extensible a otras aplicaciones (twitter) y (dispositivos).
+
+API: Estaría bueno poder ofrecer un API en la aplicacion para que cada team vaya agregando features a gusto.
+
+
+Bitbucket.org: Investigar más la parte de control de versiones (al igual que Github.com)
+
+Warehouseapp.com: Investigar para la parte de control de versiones.
+
+
+Thymer.stunf.com: Esta bueno el campo de ingreso de tareas, profundizar en como manejan el tema del ingreso (es por etiquetas? se podria escribir @ y #? @ para etiquetas y # para cosas que se interpreten –como #maniana)
+
+
+Indefero: http://www.indefero.net/tour.html (interesante el manejo de commits e historias)
+
+
+---
+
+El enfoque de la app tiene que estar en las historias. Por ejemplo, si se necesita adjuntar un archivo, necesariamente se debe linkear ese archivo a una historia (ademas los commits estarán linkeados a historias).
+
+El foco siempre es en la historia a desarrollar o en discusion, pero idealmente no debe haber secciones separadas sin relacion (mensajes o archivos sin conexion a una historia en particular).
+
+Se debe proveer un medio de organización de storias basado en etiquetas y no categorias. Folksonomia sobre taxonomia.
+
+
+---
+
+Planes: Tienen todos la misma funcionalidad, lo unico que cambia es el funcionamiento.
+
+Usuarios: Vamos a tener 2 tipos: el activo (el grupo de trabajo, o los programadores) y los pasivos (los clientes del grupo de trabajo). Todos los usuarios tienen la misma interfaz, en lo unico  en que se cambia es en el tipo de usuario. Cada tipo de usuario tiene permisos determinados. 
