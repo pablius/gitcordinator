@@ -10,94 +10,44 @@
 
 <body>
 
-<div id="session">
-	<ul>
-		<li><a href="" class="ok">&laquo; upgrade your account</a></li>
-		<li><a href="">rodrigogalindez</a></li>
-		<li><a href="">people</a></li>
-		<li><a href="">project settings</a></li>
-		<li><a href="">logout</a></li>
-	</ul>
-</div>
-
 <div id="wrapper" class="span-12">
-	<h1><span class="editable" title="Click to edit">Polaris</span></h1>
-	
-	<div id="nav">
-		<ul>
-			<li><a href="" class="active">Stories</a></li>
-			<li><a href="">Messages</a></li>
-			<li><a href="">Metrics</a></li>
-		</ul>
-	</div>
+	<h1>App name</h1>
 	
 	<div id="inner-wrapper">
 		<div id="content-wrapper">
-			<div class="col span-8">
-				<form action="forms_submit" method="get" accept-charset="utf-8">
-					<div class="field no-border">
-						<div class="col span-1">
-							<label for="username">Username</label>
-						</div>
-						<div class="col last span-3">
-							<input type="text" name="username" value="" id="username" />
-						</div>
-					</div>
-					
-					<div class="field no-border">
-						<div class="col span-1">
-							<label for="password">Password</label>
-						</div>
-						<div class="col last span-3">
-							<input type="password" name="password" value="" id="password" /> <p class="tooltip"><a href="">Forgot password?</a></p>
-						</div>
-					</div>
-					
-					<div class="field">
-						<div class="col last span-4 nudge-1">
-							<p class="submit"><input type="submit" name="some_name" value="Login" id="some_name" class="submit" /> or <a href="">sign up for a free account</a></p>
-						</div>
-					</div>
-				</form>
-			</div>
+			<h2>Sign in</h2>
 			
-			<div class="col last span-4">
-				<div class="section">
-					<h3>What's new?</h3>
-					
-					<p>Here's a quick changelog of what's new in the app:</p>
-
-					<ul>
-						<li><p>Better error messages!</p></li>
-						<li><p>More speed!</p></li>
-						<li><p>And another really cool feature that uses two lines goes here.</p></li>
-					</ul>
+			<form action="forms_submit" method="get" accept-charset="utf-8">
+				<div class="field no-border">
+					<div class="col span-2">
+						<label for="username">Username</label>
+					</div>
+					<div class="col last span-3">
+						<input type="text" name="username" value="" id="username" />
+					</div>
 				</div>
-			</div>
+				
+				<div class="field no-border">
+					<div class="col span-2">
+						<label for="password">Password</label>
+					</div>
+					<div class="col last span-3">
+						<input type="password" name="password" value="" id="password" />
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col last span-4 nudge-2">
+						<a href="setup-1.html" class="button">Continue</a>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
 	
-	<div id="footer-wrapper">
+	<div id="footer-wrapper" style="display: none">
 		<div id="footer">
-			<div class="section">
-				<h3>About</h3>
-				
-				<ul>
-					<li><p><a href="">Blog</a></p></li>
-					<li><p><a href="">Contact</a></p></li>
-				</ul>
-			</div>
-			
-			<div class="section">
-				<h3>Help</h3>
-				
-				<ul>
-					<li><p><a href="">FAQ</a></p></li>
-					<li><p><a href="">Support</a></p></li>
-				</ul>
-			</div>
-			
 			<p class="copyright">Copyright © 2009, ourappname. All rights reserved.</p>
 			<p class="copyright"><a href="">Privacy Policy</a>. <a href="">Terms and Conditions</a>.</p>
 		</div>

@@ -12,44 +12,59 @@
 
 <div id="session">
 	<ul>
-		<li><a href="upgrade.html" class="ok">&laquo; upgrade your account</a></li>
-		<li><a href="profile.html">rodrigogalindez</a></li>
-		<li><a href="people.html">people</a></li>
-		<li><a href="project-settings.html">project settings</a></li>
+		<li><a href="upgrade.html" class="ok">&laquo; upgrade your account</a> (you are using 90% of your available space)</li>
 		<li><a href="logout.html">logout</a></li>
+		<li><a href="project-settings.html">project settings</a></li>
+		<li><a href="people.html">people</a></li>
+		<li><a href="profile.html">rodrigogalindez</a></li>
 	</ul>
 </div>
 
 <div id="wrapper" class="span-12">
-	<h1><span class="editable" title="Click to edit">Polaris</span></h1>
+	<h1><span class="editable">Edit your project name</span></h1>
 	
 	<div id="nav">
 		<ul>
-			<li><a href="" class="active">Stories</a></li>
-			<li><a href="">Messages</a></li>
-			<li><a href="">Metrics</a></li>
+			<li><a href="dashboard.html" class="active">Dashboard</a></li>
+			<li><a href="browse.html">Browse</a></li>
+			<li><a href="messages.html">Messages</a></li>
+			<li><a href="metrics.html">Metrics</a></li>
 		</ul>
 	</div>
 	
 	<div id="inner-wrapper">
 		<div id="page-header">
-			<h2>Stories</h2>
+			<div class="col span-8">
+				<h2>Sprint 1: <span class="editable">Set a goal for this sprint</span></h2>
 			
-			<ul>
-				<li><a href="">Add new story</a></li>
-				<li><a href="">Browse by tags</a></li>
-			</ul>
+				<ul>
+					<li><a href="">Finish this sprint</a></li>
+				</ul>
+			</div>
+			
+			<div class="col last span-4">
+				<table class="add-story">
+					<tr>
+						<td>
+							<input type="text" name="some_name" value="" id="some_name" />
+						</td>
+						<td>
+							<input type="submit" name="some_name" value="Add story" id="some_name" class="submit" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><p><small>Use: "New sign up @pablius #interface". <a href="">More help</a>.</small></p></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		
 		<div id="content-wrapper">
 			<div class="col span-6">
 				<div class="module">
 					<div class="module-header">
-						<h3>This Sprint</h3>
-						
-						<ul>
-							<li><a href="">Sprint settings</a></li>
-						</ul>
+						<h3>In Progress<br /><small>This Sprint</small>
+						</h3>
 					</div>
 					
 					<div class="story">
@@ -76,7 +91,7 @@
 					<div class="story">
 						<div class="story-meta">
 							<ul>
-								<li class="priority"><a href="">3</a></li>
+								<li class="priority"><a href="">324</a></li>
 								<!-- <li><a href="">Accept</a></li> -->
 							</ul>
 						</div>
@@ -97,7 +112,7 @@
 					<div class="story">
 						<div class="story-meta">
 							<ul>
-								<li class="priority"><a href="">3</a></li>
+								<li class="priority"><a href="">143</a></li>
 								<!-- <li><a href="">Accept</a></li> -->
 							</ul>
 						</div>
@@ -141,7 +156,7 @@
 			<div class="col span-3">
 				<div class="module">
 					<div class="module-header">
-						<h3>Product backlog</h3>
+						<h3>To-do<br /><small>Product Backlog</small></h3>
 					</div>
 					
 					<div class="story">
@@ -212,7 +227,7 @@
 			<div class="col last span-3">
 				<div class="module">
 					<div class="module-header">
-						<h3>Unplanned stories</h3>
+						<h3>Unplanned <br /><br /></h3>
 					</div>
 					
 					<div class="story">
