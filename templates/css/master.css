@@ -290,6 +290,41 @@ label {
 	background: #fff url(../images/bg-story.gif) repeat-x bottom left;
 }
 
+.story-sprint {
+	width: 5.8em;
+	margin-right: 2.4em;
+	float: left;
+}
+
+.story-sprint span {
+	display: block;
+	font-size: 2.4em;
+	line-height: 1.3;
+	text-align: center;
+}
+
+.story-status {
+	width: 14em;
+	margin-right: 2.4em;
+	float: left;
+}
+
+.story-status span {
+	display: block;
+	padding: .3em;
+	font-size: 1.3em;
+	text-align: center;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.story-status span.rejected {
+	width: 5em;
+	color: #fff;	
+	background: #AE2420;
+	border: 2px solid #99201C;
+}
+
 .story-meta {
 	width: 5.8em;
 	overflow: hidden;
@@ -604,6 +639,32 @@ dl.person a {
 }
 
 dl.person a:hover {
+	text-decoration: underline;
+}
+
+#files-wrapper {
+	margin: 0 0 2em 0;
+	padding: 0 0 1em 0;
+	border-bottom: 1px solid #ddd;
+}
+
+#files-wrapper ul {
+	margin: 0;
+	list-style-type: none;
+}
+
+#files-wrapper li {
+	font-family: Monaco, "Courier New", fixed;
+	font-size: 1.2em;
+	line-height: 1.4;
+}
+
+#files-wrapper li a {
+	color: #2C7FA2;
+	text-decoration: none;
+}
+
+#files-wrapper li a:hover {
 	text-decoration: underline;
 }
 
