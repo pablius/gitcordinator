@@ -1,0 +1,34 @@
+﻿<?
+
+// we try to create the project with the given name, if we fail, we send the user back to step 1 (it should never happen, because we are validating it with js in the previous screen
+$new_project = new project_project();
+$new_project->set('name','Edit your project name');
+$new_project->set('sprint_speed',new project_sprint_speed(1));
+$new_project->set('importance_rate',new project_importance_rate(1));
+$new_project->set('url_repo',$_POST['name']);
+$new_project->set('repo',new project_repository_type(1));
+$new_project->set('user',$ari->user);
+
+if (!$new_project->store())
+{
+	header( "Location: " . $ari->get('webaddress') . '/project/setup/1');
+	exit;
+}
+else
+{
+	$today = new Date(date('Y-m-d'));
+	$finish =  new Date(date('Y-m-d',  strtotime("+".$new_project->get('sprint_speed')->get('days')." days")));
+	$new_sprint = new project_sprint();
+	$new_sprint->set('project',$new_project);
+	$new_sprint->set('start',$today);
+	$new_sprint->set('finish',$finish);
+	$new_sprint->set('goal','Set a goal for this sprint');
+	$new_sprint->store();
+}
+
+
+$ari->t->assign('url', $_POST['name'] . '.clarisapp.com');
+$ari->t->assign('user', $ari->user->get('uname') . '@' . $_POST['name'] . '.clarisapp.com');
+$ari->t->display($ari->module->usertpldir(). DIRECTORY_SEPARATOR . "setup_2.tpl");
+ 
+?>
