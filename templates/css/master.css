@@ -259,6 +259,17 @@ label {
 	text-decoration: underline;
 }
 
+#page-header-title {
+	width: 70%;
+/*	background: red;*/
+	float: left;
+}
+
+#page-header-action {
+	margin-left: 70%;
+/*	background: yellow;*/
+}
+
 /* --------------------------------- [ Content Wrapper ] */
 
 #content-wrapper {
@@ -937,6 +948,7 @@ h4.large, a.large {
 table.add-story {
 	width: 100%;
 	border-collapse: collapse;
+/*	background: red;*/
 }
 
 table.add-story td {
