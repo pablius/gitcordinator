@@ -25,6 +25,10 @@ class project_tag extends OOB_model_type
 	static public function tag_cloud (project_project $project)
 	{}
 	
+	public function name()
+	{
+		return $this->get('tag');
+	}
 	
 }
 ?>

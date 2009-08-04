@@ -152,15 +152,35 @@ class project_project extends OOB_model_type
 		return $this->get('name');
 	}
 
-	
-	public function this_sprint()
+	/* capaz que esto tenga que ir en sprint no? */
+	public function current_sprint()
 	{
 		global $ari;
 		
 		$id_project = $ari->db->qMagic($this->id());
-		$actual_sprint = project_sprint::getList(false, 1, 'id', DESC, false, false, false, "AND id_project = $id_project");
+		$actual_sprint = project_sprint::getList(false, 1, 'id', DESC, false, false, false, "AND id_project = $id_project AND id_kind = 1");
 		
 		return $actual_sprint[0];
+	}
+	
+	public function product_backlog()
+	{
+		global $ari;
+		
+		$id_project = $ari->db->qMagic($this->id());
+		$product_backlog = project_sprint::getList(false, 1, 'id', DESC, false, false, false, "AND id_project = $id_project AND id_kind = 2");
+		
+		return $product_backlog[0];
+	}
+	
+	public function unplaned()
+	{
+		global $ari;
+		
+		$id_project = $ari->db->qMagic($this->id());
+		$unplaned = project_sprint::getList(false, 1, 'id', DESC, false, false, false, "AND id_project = $id_project AND id_kind = 3");
+		
+		return $unplaned[0];
 	}
 	
 }

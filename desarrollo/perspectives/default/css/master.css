@@ -20,7 +20,7 @@
 body {
 	font-family: Helvetica, Arial, Verdana, sans-serif;
 	font-size: 62.5%;
-/*	background: transparent url(../images/grid-960.gif) repeat-y top center;*/
+/*	background: transparent url(/images/grid-960.gif) repeat-y top center;*/
 	background-color: #f6f6f6;
 	color: #333;
 }
@@ -134,7 +134,7 @@ label {
 	text-indent: -1000em;
 	width: 51px;
 	height: 18px;
-	background: transparent url(../images/claris.png) no-repeat top left;
+	background: transparent url(/images/claris.png) no-repeat top left;
 	margin-left: 0;
 	float: left;
 }
@@ -202,22 +202,22 @@ label {
 
 #nav li a.dashboard {
 	padding-left: 36px;
-	background: transparent url(../images/4.png) no-repeat .4em top;
+	background: transparent url(/images/4.png) no-repeat .4em top;
 }
 
 #nav li a.browse {
 	padding-left: 36px;
-	background: transparent url(../images/12.png) no-repeat .4em top;
+	background: transparent url(/images/12.png) no-repeat .4em top;
 }
 
 #nav li a.messages {
 	padding-left: 36px;
-	background: transparent url(../images/9.png) no-repeat .4em top;
+	background: transparent url(/images/9.png) no-repeat .4em top;
 }
 
 #nav li a.metrics {
 	padding-left: 36px;
-	background: transparent url(../images/32.png) no-repeat .4em top;
+	background: transparent url(/images/32.png) no-repeat .4em top;
 }
 
 /* ----------------------------------- [ Inner Wrapper ] */
@@ -233,7 +233,7 @@ label {
 	padding: 0 0 1em 1em;
 	margin: 0 0 2em 0;
 	border-bottom: 3px solid #ddd;
-	background: #fff url(../images/bg-story.gif) repeat-x bottom left;
+	background: #fff url(/images/bg-story.gif) repeat-x bottom left;
 	overflow: hidden;
 }
 
@@ -257,6 +257,17 @@ label {
 
 #page-header li a:hover {
 	text-decoration: underline;
+}
+
+#page-header-title {
+	width: 70%;
+/*	background: red;*/
+	float: left;
+}
+
+#page-header-action {
+	margin-left: 70%;
+/*	background: yellow;*/
 }
 
 /* --------------------------------- [ Content Wrapper ] */
@@ -321,7 +332,7 @@ label {
 }
 
 .story:hover {
-	background: #fff url(../images/bg-story.gif) repeat-x bottom left;
+	background: #fff url(/images/bg-story.gif) repeat-x bottom left;
 }
 
 .story-sprint {
@@ -355,7 +366,7 @@ label {
 .story-status span.accepted {
 	width: 5em;
 	color: #fff;	
-	background: #A0BF2C url(../images/bg-faux-button.png) repeat-x left -90px;
+	background: #A0BF2C url(/images/bg-faux-button.png) repeat-x left -90px;
 	border: 2px solid #87A125;
 	text-shadow: 0 -1px 0 #59595E;
 }
@@ -363,7 +374,7 @@ label {
 .story-status span.rejected {
 	width: 5em;
 	color: #fff;	
-	background: #AE2420 url(../images/bg-faux-button.png) repeat-x left -90px;
+	background: #AE2420 url(/images/bg-faux-button.png) repeat-x left -90px;
 	border: 2px solid #99201C;
 	text-shadow: 0 -1px 0 #59595E;
 }
@@ -474,7 +485,7 @@ label {
 	width: 16px;
 	height: 16px;
 	text-indent: -1000em;	
-	background: transparent url(../images/61.png) no-repeat top left;
+	background: transparent url(/images/61.png) no-repeat top left;
 }
 
 .story-edit-button {
@@ -482,7 +493,7 @@ label {
 	width: 16px;
 	height: 16px;
 	text-indent: -1000em;
-	background: transparent url(../images/60.png) no-repeat top left;
+	background: transparent url(/images/60.png) no-repeat top left;
 }
 
 /*Forms*/
@@ -918,7 +929,7 @@ h4.large, a.large {
 	vertical-align: top;
 	text-decoration: none;
 	font-weight: bold;
-	background: #A0BF2C url(../images/bg-faux-button.png) repeat-x left -87px;
+	background: #A0BF2C url(/images/bg-faux-button.png) repeat-x left -87px;
 	border: 2px solid #87A125;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
@@ -937,6 +948,7 @@ h4.large, a.large {
 table.add-story {
 	width: 100%;
 	border-collapse: collapse;
+/*	background: red;*/
 }
 
 table.add-story td {

@@ -44,6 +44,31 @@ class project_story extends OOB_model_type
 		return $this->get('name');
 	}
 	
+	public function asigned()
+	{
+		return project_person::exists($this->get('asigned'));
+	}
+	
+	public function created()
+	{
+		return project_person::exists($this->get('created'));
+	}
+	
+	public function tags()
+	{
+		$return = false;
+		if ($tags = project_tag::getRelated($this))
+		{
+			$i = 0;
+			$return = array();
+			foreach ($tags as $tag)
+			{
+				$return[$i] = $tag->name();
+			}
+		}
+		return $return;
+	}
+	
 	static public function new_from_string($string, project_sprint $sprint)
 	{
 		global $ari;

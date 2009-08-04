@@ -13,11 +13,11 @@
 <div id="session">
 	<ul>
 		<li>Claris</li>
-		<li><a href="/project/plan" class="ok">&laquo; upgrade your account</a> <!-- BLOQUE ESTADO DE PLAN(you are using 90% of your available space) --></li> 
+		<!--  <li><a href="/project/plan" class="ok">&laquo; upgrade your account</a> BLOQUE ESTADO DE PLAN(you are using 90% of your available space) --></li> 
 		<li><a href="/seguridad/logout">logout</a></li>
 		<li><a href="/project/settings">project settings</a></li>
 		<li><a href="/project/people">people</a></li>
-		<li><a href="/project/myprofile">rodrigogalindez</a></li>
+		<li><a href="/project/myprofile">{$currentUser}</a></li>
 	</ul>
 </div>
 
@@ -25,11 +25,11 @@
 	<h1><span class="editable">{$description}</span></h1>
 	
 	<div id="nav">
-		<ul>
-			<li><a href="/project/dashboard" class="active">Dashboard</a></li> <!-- ver como detecto la nav --> 
-			<li><a href="/project/browse">Browse</a></li>
-			<li><a href="/project/messages">Messages</a></li>
-			<li><a href="/project/metrics">Metrics</a></li>
+		<ul>	
+			<li><a href="/project/dashboard" class="dashboard active">Dashboard</a></li>
+			<li><a href="/project/browse" class="browse">Browse</a></li>
+			<li><a href="/project/messages" class="messages">Messages</a></li>
+			<li><a href="/project/metrics" class="metrics">Metrics</a></li>
 		</ul>
 	</div>
 	
@@ -57,7 +57,7 @@
 				</ul>
 			</div>
 			
-			<p class="copyright">&copy;2009, {$title}. All rights reserved.</p>
+			<p class="copyright">&copy;2009 Claris. All rights reserved.</p>
 			<p class="copyright"><a href="">Privacy Policy</a>. <a href="">Terms and Conditions</a>.</p>
 		</div>
 	</div>

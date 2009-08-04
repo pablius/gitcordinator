@@ -23,6 +23,10 @@ if (isset ($handle[1]) && file_exists ($ari->module->userdir() . DIRECTORY_SEPAR
 {
 	include ($ari->module->userdir() . DIRECTORY_SEPARATOR  . $handle[0] . "_" . $handle[1] . ".php");
 }
+elseif (file_exists ($ari->module->userdir() . DIRECTORY_SEPARATOR  . $handle[0] . ".php"))
+{
+	include ($ari->module->userdir() . DIRECTORY_SEPARATOR  . $handle[0] . ".php");
+}
 else
 {
 	echo 'URL not found';

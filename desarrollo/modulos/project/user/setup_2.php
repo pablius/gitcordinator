@@ -16,6 +16,7 @@ if (!$new_project->store())
 }
 else
 {
+	// sprint
 	$today = new Date(date('Y-m-d'));
 	$finish =  new Date(date('Y-m-d',  strtotime("+".$new_project->get('sprint_speed')->get('days')." days")));
 	$new_sprint = new project_sprint();
@@ -23,7 +24,28 @@ else
 	$new_sprint->set('start',$today);
 	$new_sprint->set('finish',$finish);
 	$new_sprint->set('goal','Set a goal for this sprint');
+	$new_sprint->set('kind',new project_sprint_kind(1));
 	$new_sprint->store();
+	
+	// backlog
+	$product_backlog = new project_sprint();
+	$product_backlog->set('project',$new_project);
+	$product_backlog->set('start',$today);
+	$product_backlog->set('finish',$finish);
+	$product_backlog->set('goal','Product BackLog');
+	$product_backlog->set('kind',new project_sprint_kind(2));
+	$product_backlog->store();
+	
+	//undefined
+	$undefined = new project_sprint();
+	$undefined->set('project',$new_project);
+	$undefined->set('start',$today);
+	$undefined->set('finish',$finish);
+	$undefined->set('goal','Undefined');
+	$undefined->set('kind',new project_sprint_kind(3));
+	$undefined->store();
+	
+	// create person for this user.
 }
 
 

@@ -97,7 +97,7 @@ class project_person extends OOB_model_type
 		
 		if (count($result = static::getList(false, false, false, false, false, false, false, "AND id_user = $string")) == 1)
 		{
-			return $result;
+			return $result[0];
 		}
 		else
 		{

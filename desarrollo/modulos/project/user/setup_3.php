@@ -4,7 +4,7 @@ if (count($_POST))
 	// viene la historia para grabar, la grabamos, y redirigimos al dashboard de una vez!
 	
 	
-	if (project_story::new_from_string($_POST['new_story'],$project->this_sprint()))
+	if (project_story::new_from_string($_POST['new_story'],$project->unplaned()))
 	{
 		// redirigimos al dashboard		
 		header( "Location: " . $ari->get('webaddress') . '/project/dashboard');
