@@ -7,7 +7,6 @@ class project_project extends OOB_model_type
 	
 		'name' 					=> 'isClean,isCorrectLength-1-255',
 		'id_sprint_speed' 		=> 'object-project_sprint_speed',
-		'id_importance_rate' 	=> 'object-project_importance_rate',
 		'url_repo'				=> 'isClean,isCorrectLength-1-500',
 		'id_repo'				=> 'object-project_repository_type',
 		'id_user'				=> 'object-oob_user'
@@ -22,7 +21,6 @@ class project_project extends OOB_model_type
 	// definimos los attr del objeto
 	public $name;
 	public $id_sprint_speed;
-	public $id_importance_rate;
 	public $url_repo;
 	public $id_repo;
 	public $id_user;

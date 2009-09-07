@@ -10,7 +10,8 @@ class project_sprint extends OOB_model_type
 		'id_project' 				=> 'object-project_project',
 		'goal'						=> 'isClean,isCorrectLength-0-9999',
 		'eval_meeting_result'		=> 'isClean,isCorrectLength-0-9999',
-		'id_kind'					=> 'object-project_sprint_kind'
+		'id_kind'					=> 'object-project_sprint_kind',
+		'number'					=> 'isInt'
 
 	); // property => constraints
 	
@@ -25,6 +26,7 @@ class project_sprint extends OOB_model_type
 	public $goal;
 	public $eval_meeting_result;
 	public $id_kind;
+	public $number;
 	
 	protected  function isDuplicated()
 	{
@@ -43,9 +45,10 @@ class project_sprint extends OOB_model_type
 		
 		$id_project = $ari->db->qMagic($this->get('project')->id());
 		$id_kind = $ari->db->qMagic($this->get('kind')->id());
+		$number = $ari->db->qMagic($this->get('number'));
 		$start = $ari->db->qMagic($this->get('start')->format('%Y-%m-%d'));	
 		
-		if (static::getListCount(false, false, false, "AND id_project = $id_project AND start  = $start AND id_kind = $id_kind $clausula") == 0)
+		if (static::getListCount(false, false, false, "AND id_project = $id_project AND number = $number AND id_kind = $id_kind $clausula") == 0) // AND start  = $start
 		{
 			return false;						
 		}
@@ -63,8 +66,20 @@ class project_sprint extends OOB_model_type
 	
 	public function number()
 	{
-		return $this->id(); // needs to change...
+		return $this->get('number'); 
 	}
+	
+	/*public function isValid()
+	{
+		
+		if ($this->get('number') == '')
+		{
+			$this->set('number',$this->get('project')->current_sprint()->get('number') + 1);
+		}
+		
+		return static::isValid();
+	
+	}*/
 
 }
 ?>

@@ -7,7 +7,7 @@ class project_daily extends OOB_model_type
 	
 		'id_sprint'		=> 'object-project_sprint',
 		'date' 			=> 'object-Date',
-		'id_user'		=> 'object-oob_user',
+		'id_person'		=> 'object-project_person',
 		'yesterday'		=> 'isClean,isCorrectLength-0-999',
 		'today'		=> 'isClean,isCorrectLength-0-999',
 		'blocks'		=> 'isClean,isCorrectLength-0-999',

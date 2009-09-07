@@ -5,7 +5,7 @@ class project_comment extends OOB_model_type
 
 	static protected $public_properties = array(
 	
-		'id_user' 					=> 'object-oob_user',
+		'id_person' 					=> 'object-project_person',
 		'message' 					=> 'isClean,isCorrectLength-0-9999',
 		'id_story' 					=> 'object-project_story',
 		'line'						=> 'isClean,isInt',
@@ -19,7 +19,7 @@ class project_comment extends OOB_model_type
 	static $orders = array('message','date'); 
 	
 	// definimos los attr del objeto
-	public $id_user;
+	public $id_person;
 	public $message;
 	public $id_story;
 	public $line;

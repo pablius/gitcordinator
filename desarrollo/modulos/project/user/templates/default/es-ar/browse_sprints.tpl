@@ -1,0 +1,34 @@
+<div id="inner-wrapper">
+	<div id="page-header">
+		<div class="col span-8">
+			<h2>Previous Sprints</h2>
+		</div>
+		
+		<div class="col last span-4">
+		</div>
+	</div>
+	
+	<div id="content-wrapper">
+		
+		{section name=s loop=$sprints}
+		<div class="story">
+			<div class="story-sprint">
+				<a href="{$webdir}/project/browse/sprint/{$sprints[s].number}"><span>{$sprints[s].number}</span></a>
+			</div>
+			
+			
+			<div class="story-description">
+				<div class="story-title">
+					<h4 class="medium"><span class="editable" title="Click to edit">{$sprints[s].goal}</span></h4>
+				</div>
+				
+				
+			</div>
+		</div>
+		{/section}
+	
+	</div>
+</div>
+
+	
+	

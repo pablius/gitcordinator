@@ -9,7 +9,7 @@ class project_commit extends OOB_model_type
 		'id_project'		=> 'object-project_project',
 		'date'				=> 'object-Date',
 		'message'			=> 'isClean,isCorrectLength-0-9999',
-		'id_user'				=> 'object-oob_user'
+		'id_person'				=> 'object-project_person'
 		
 	); // property => constraints
 	
@@ -22,7 +22,7 @@ class project_commit extends OOB_model_type
 	public $id_project;
 	public $date;
 	public $message;
-	public $id_user;
+	public $id_person;
 	
 	
 }

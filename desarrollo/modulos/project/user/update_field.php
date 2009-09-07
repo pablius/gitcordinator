@@ -1,59 +1,63 @@
 ﻿<?
-global $ari;
-
-$allowed = array 
-			(
-				'sprint->goal' => array('project_sprint', 'goal'),
-				'project->name' => array('project_project', 'name', ),
-				'story->name' => array('project_story', 'name')
-			);
+/* Dashboard fields update 
+- Here we update project name or sprint goal.
+*/
 
 if (
-		isset ($_GET['object']) && isset($_GET['attribute']) 
-		&& array_key_exists($_GET['object'] . '->' . $_GET['attribute'], $allowed) 
-		&& isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0
-		&& isset($_GET['value'])
+	($project->get('user')->id() != $ari->user->id())
+	||
+	(!isset($_GET['field']))
+	||
+	(!isset($_GET['value']))
 	)
 {
-	$object  = $allowed[$_GET['object'] . '->' . $_GET['attribute']][0];
-	$attribute = $allowed[$_GET['object'] . '->' . $_GET['attribute']][1];
-	$id = $_GET['id'];
-	$value = $_GET['value'];
-	
-	$object = new $object($id);
-	
-	// seguridad primitiva para que no cambien  lo que no les corresponde
-	if (is_a($object, 'project_project'))
+	throw new OOB_exception('', "403", 'Not allowed');	
+}
+
+$result = false;
+
+switch ($_GET['field'])
+{
+	case 'project':
 	{
-		if ($object->get('user')->id() != $ari->user->id() || ($object->id() != $project->id()))
+		$project->set('name',$_GET['value']);
+		if ($project->store())
 		{
-			throw new OOB_exception('', "403", 'Not allowed');	
+			$result = true;
 		}
-		
+		break;
 	}
-	else
-	{	
-		if ($object->get('project')->get('user')->id() != $ari->user->id() || ($object->get('project')->id() != $project->id()))
+	
+	case 'goal':
+	{
+		$sprint = $project->current_sprint();
+		$sprint->set('goal',$_GET['value']);
+		if ($sprint->store())
 		{
-			throw new OOB_exception('', "403", 'Not allowed');	
+			$result = true;
 		}
+		break;
 	}
 	
-	$object->set($attribute, $value);
-	
-	if ($object->store())
+	default:
 	{
-		echo true;
+		throw new OOB_exception('', "404", 'Data missmatch');		
+		break;
 	}
-	else
-	{
-		echo false;
-	}
+
+
+}
+
+// cambiar por js
+if ($result)
+{
+	echo 'ok';
 }
 else
 {
-	throw new OOB_exception('', "404", 'Data missmatch');	
+	echo 'fail';
 }
+
 
  
 ?>

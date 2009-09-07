@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -26,10 +26,10 @@
 	
 	<div id="nav">
 		<ul>	
-			<li><a href="/project/dashboard" class="dashboard active">Dashboard</a></li>
-			<li><a href="/project/browse" class="browse">Browse</a></li>
-			<li><a href="/project/messages" class="messages">Messages</a></li>
-			<li><a href="/project/metrics" class="metrics">Metrics</a></li>
+			<li><a href="/project/dashboard" class="dashboard {if $active_dashboard}active{/if}">Dashboard</a></li>
+			<li><a href="/project/browse" class="browse {if $active_browse}active{/if}">Browse</a></li>
+			<!-- <li><a href="/project/messages" class="messages">Messages</a></li> --> 
+			<li><a href="/project/metrics" class="metrics {if $active_metrics}active{/if}">Metrics</a></li>
 		</ul>
 	</div>
 	

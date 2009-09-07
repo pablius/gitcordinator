@@ -1,7 +1,7 @@
 ﻿<?
 global $ari;
 $ari->t->caching = false;
-
+$ari->t->force_compile = true;
 // process new stories creation
 
 
@@ -18,7 +18,7 @@ if ($unplaned = project_story::getRelated($project->unplaned()))
 		$unplaned_items[$u]['id'] = $u_story->id();
 		$unplaned_items[$u]['name'] = $u_story->name();
 		$unplaned_items[$u]['asigned'] = $u_story->asigned()->name();
-		$unplaned_items[$u]['tags'] = $u_story->tags();
+		$unplaned_items[$u]['tags'] = $u_story->tags();	
 		$u++;
 	}
 }

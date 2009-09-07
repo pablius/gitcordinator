@@ -9,19 +9,21 @@
 		</div>
 		
 		<div id="page-header-action">
+			<form method="POST" action="{$webdir}/project/story_shortnew">
 			<table class="add-story">
 				<tr>
 					<td>
-						<input type="text" name="some_name" value="" id="some_name" />
+						<input type="text" name="story" value="" id="new_short_story" />
 					</td>
 					<td>
-						<a href="" class="button">Add story</a>
+						<input type="submit" class="button" value="Add story" />
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><p><small>Use: "New sign up @pablius #interface". <a href="">More help</a>.</small></p></td>
+					<td colspan="2"><p><small>Use: "New sign up form @pablius #interface" <a href="">More help</a></small></p></td>
 				</tr>
 			</table>
+			</form>
 		</div>
 	</div>
 	
@@ -42,14 +44,14 @@
 					
 					<div class="story-description">
 						<div class="story-title">
-							<h4 class="small"><span class="editable" title="Click to edit">@{$current_sprint[cs].name}</span></h4>
+							<h4 class="small"><span class="editable" title="Click to edit">{$current_sprint[cs].name}</span></h4>
 						</div>
 						
 						<div class="story-details">
 							<ul>
 								<li>
 									<p>
-										<a href="/project/browse/person/{$current_sprint[cs].asigned}" title="View stories for {$current_sprint[cs].asigned}">{$current_sprint[cs].asigned}</a> 
+										<a href="/project/browse/person/{$current_sprint[cs].asigned}" title="View stories for {$current_sprint[cs].asigned}">@{$current_sprint[cs].asigned}</a> 
 										{section name=cst loop=$current_sprint[cs].tags}
 										<a href="/project/browse/tag/{$current_sprint[cs].tags[cst]}" title="View stories tagged as '{$current_sprint[cs].tags[cst]}'">#{$current_sprint[cs].tags[cst]}</a> 
 										{/section}

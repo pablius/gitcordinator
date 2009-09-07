@@ -5,16 +5,17 @@ class project_story extends OOB_model_type
 
 	static protected $public_properties = array(
 	
-		'id_status' 		=> 'object-project_story_status',
+		'id_state' 			=> 'object-project_story_status',
 		'relevance' 		=> 'isClean,isInt',
 		'id_project' 		=> 'object-project_project', // not needed really
 		'id_sprint' 		=> 'object-project_sprint',
-		'estimate'			=> 'isClean,isFloat',
+		'id_estimate'		=> 'object-project_story_estimate',
+		'id_remaining'		=> 'object-project_story_estimate',
 		'name'				=> 'isClean,isCorrectLength-0-300',
 		'demo'				=> 'isClean,isCorrectLength-0-9999',
 		'description'		=> 'isClean,isCorrectLength-0-9999',
-		'id_asigned' 		=> 'object-oob_user',
-		'id_created' 		=> 'object-oob_user',
+		'id_asigned' 		=> 'object-project_person',
+		'id_created' 		=> 'object-project_person',
 		'date' 				=> 'object-Date',
 		'array_tags' 		=> 'manyobjects-project_tag'
 
@@ -25,11 +26,12 @@ class project_story extends OOB_model_type
 	static $orders = array('start','goal'); 
 	
 	// definimos los attr del objeto
-	public $id_status;
-	public $id_relevance;
+	public $id_state;
+	public $relevance;
 	public $id_project;
 	public $id_sprint;
-	public $estimate;
+	public $id_estimate;
+	public $id_remaining;
 	public $name;
 	public $demo;
 	public $description;
@@ -46,7 +48,7 @@ class project_story extends OOB_model_type
 	
 	public function asigned()
 	{
-		return project_person::exists($this->get('asigned'));
+		return $this->get('asigned'); // project_person::exists();
 	}
 	
 	public function created()
@@ -64,6 +66,7 @@ class project_story extends OOB_model_type
 			foreach ($tags as $tag)
 			{
 				$return[$i] = $tag->name();
+				$i++;
 			}
 		}
 		return $return;
@@ -98,7 +101,6 @@ class project_story extends OOB_model_type
 			
 			if (substr($dato,0,1) == '#')
 			{
-
 				$tags[] = substr($dato,1,strlen($dato));
 			}
 			
@@ -118,30 +120,27 @@ class project_story extends OOB_model_type
 				$ari->db->FailTrans();$ari->db->completeTrans();
 				return false;
 			}
-			else
+			/*else
 			{
 				$asigned_to = $asigned_to->get('user');
-			}
+			}*/
 		}
-		
-	
 		
 		// create object and save.
 		$new_story = new project_story();
-		$new_story->set('status',new project_story_status(1));
+		$new_story->set('state',new project_story_status(1));
 		$new_story->set('relevance',1);
 		
 		$new_story->set('project',$sprint->get('project'));
 		$new_story->set('sprint',$sprint);
 		
-		$new_story->set('estimate',1);
+		$new_story->set('estimate',new project_story_estimate(13));
+		$new_story->set('remaining',new project_story_estimate(13));
 		$new_story->set('name',str_replace('#','',str_replace($tags,'',str_replace('@'. $twitter_user,'',$string))));
-		$new_story->set('sprint',$sprint);
+
 		$new_story->set('asigned',$asigned_to);
-		$new_story->set('created',$ari->user);
+		$new_story->set('created',project_person::exists($ari->user));
 		$new_story->set('date',new Date());
-		
-		
 		
 		// check if there are any tags
 
@@ -164,11 +163,6 @@ class project_story extends OOB_model_type
 			$ari->db->FailTrans();$ari->db->completeTrans();
 			return false;
 		}
-		
-		
-		
-		
-		
 		
 	}
 
