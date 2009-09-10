@@ -18,6 +18,11 @@ class project_sprint_speed extends OOB_model_type
 	// definimos los attr del objeto
 	public $description;
 	public $days;
+	
+	public function name()
+	{
+		return $this->get('description');
+	}
 }
 ?>
 

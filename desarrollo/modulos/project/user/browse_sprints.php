@@ -15,6 +15,15 @@ foreach ($results as $sprint)
 {
 	$sprints[$s]['goal'] = $sprint->name();
 	$sprints[$s]['number'] = $sprint->number();
+	$sprints[$s]['total_estimate'] = $sprint->total_estimate();
+	$sprints[$s]['result'] = $sprint->get('eval_meeting_result');
+	$sprints[$s]['started'] = $sprint->get('start')->format('%D');
+	$sprints[$s]['finished'] = $sprint->get('finish')->format('%D');
+	$sprints[$s]['finished_string'] = (strtotime($sprints[$s]['finished']) > strtotime(date('M j, Y')))?'Estimated finish on':'Finished';
+	//$sprints[$s]['number'] = $sprint->number();
+
+	
+	
 	$s++;
 }
 

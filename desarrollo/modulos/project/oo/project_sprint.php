@@ -11,7 +11,8 @@ class project_sprint extends OOB_model_type
 		'goal'						=> 'isClean,isCorrectLength-0-9999',
 		'eval_meeting_result'		=> 'isClean,isCorrectLength-0-9999',
 		'id_kind'					=> 'object-project_sprint_kind',
-		'number'					=> 'isInt'
+		'number'					=> 'isInt',
+		'array_stories'				=> 'manyobjects-project_story'
 
 	); // property => constraints
 	
@@ -27,6 +28,8 @@ class project_sprint extends OOB_model_type
 	public $eval_meeting_result;
 	public $id_kind;
 	public $number;
+	
+	public $array_stories = array();
 	
 	protected  function isDuplicated()
 	{
@@ -67,6 +70,21 @@ class project_sprint extends OOB_model_type
 	public function number()
 	{
 		return $this->get('number'); 
+	}
+	
+	public function total_estimate()
+	{
+		global $ari;
+		$return = 0;
+		if ($stories = $this->get('stories'))
+		{
+			foreach ($stories as $story)
+			{
+				$return += $story->get('estimate')->get('value');
+			}
+		}
+		
+		return $return;
 	}
 	
 	/*public function isValid()

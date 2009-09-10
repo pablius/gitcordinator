@@ -8,6 +8,7 @@ class project_project extends OOB_model_type
 		'name' 					=> 'isClean,isCorrectLength-1-255',
 		'id_sprint_speed' 		=> 'object-project_sprint_speed',
 		'url_repo'				=> 'isClean,isCorrectLength-1-500',
+		'repo_local'			=> 'isBool',
 		'id_repo'				=> 'object-project_repository_type',
 		'id_user'				=> 'object-oob_user'
 
@@ -22,6 +23,7 @@ class project_project extends OOB_model_type
 	public $name;
 	public $id_sprint_speed;
 	public $url_repo;
+	public $repo_local;
 	public $id_repo;
 	public $id_user;
 	

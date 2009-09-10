@@ -4,7 +4,7 @@
 				<h2>Browse</h2>
 			
 				<ul>
-					<li><a href="{$webdir}/project/browse/daily">Daily scrums</a></li>
+					<li><a href="{$webdir}/project/browse/dailyscrums">Daily scrums</a></li>
 					<li><a href="{$webdir}/project/browse/sprints">Previous Sprints</a></li>
 				</ul>
 			</div>

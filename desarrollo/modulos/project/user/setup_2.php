@@ -8,6 +8,7 @@ $new_project->set('name','Edit your project name');
 $new_project->set('sprint_speed',new project_sprint_speed(1));
 // $new_project->set('importance_rate',new project_importance_rate(1)); /// lo sacamos.
 $new_project->set('url_repo',$_POST['name']);
+$new_project->set('repo_local',true);
 $new_project->set('repo',new project_repository_type(1));
 $new_project->set('user',$ari->user);
 

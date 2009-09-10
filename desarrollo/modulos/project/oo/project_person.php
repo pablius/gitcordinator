@@ -31,6 +31,9 @@ class project_person extends OOB_model_type
 	public $id_user;
 	public $id_project;
 	
+	public $array_stories = array();
+	public $array_tags = array();
+	
 	
 	static public function create_new_person($twitter_user, project_project $project)
 	{
