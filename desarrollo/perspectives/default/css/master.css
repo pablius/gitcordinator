@@ -985,14 +985,14 @@ table.add-story input {
 }
 
 .notice {
-	margin: 0 0 2em 0;
+	margin-bottom: 2em;
 	padding: 1em;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 }
 
 .error {
-	background: #D6EDD7;
+	background: #EDD8D6;
 	color: #fff;
 }
 
