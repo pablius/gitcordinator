@@ -21,6 +21,10 @@
 	</ul>
 </div>
 
+<div class="notice error">
+	<p>Mensaje. <a href="" class="button">Close.</a></p>
+</div>
+
 <div id="wrapper" class="span-12">
 	<h1><span class="editable">{$description}</span></h1>
 	
