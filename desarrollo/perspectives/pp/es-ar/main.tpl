@@ -21,8 +21,8 @@
 	</ul>
 </div>
 
-<div class="notice error">
-	<p>Mensaje. <a href="" class="button">Close.</a></p>
+<div class="notice error span-12">
+	<p>Mensaje. <a href="">Close.</a></p>
 </div>
 
 <div id="wrapper" class="span-12">
