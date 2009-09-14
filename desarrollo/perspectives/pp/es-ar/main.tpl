@@ -6,6 +6,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{$title}</title>
 	<link rel="stylesheet" href="{$webdir}/perspectives/default/css/master.css" type="text/css" media="screen" title="master" charset="utf-8">
+		
+	<!-- Jquery CDN --> 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+	
 </head>
 
 <body>
@@ -17,12 +22,12 @@
 		<li><a href="/seguridad/logout">logout</a></li>
 		<li><a href="/project/settings">project settings</a></li>
 		<li><a href="/project/people">people</a></li>
-		<li><a href="/project/myprofile">{$currentUser}</a></li>
+		<li><a href="/project/myprofile">{$person_name}</a></li>
 	</ul>
 </div>
 
 <div class="notice error span-12">
-	<p>Mensaje. <a href="">Close.</a></p>
+	<p>{$message}</p>
 </div>
 
 <div id="wrapper" class="span-12">

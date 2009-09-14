@@ -34,6 +34,63 @@ class project_person extends OOB_model_type
 	public $array_stories = array();
 	public $array_tags = array();
 	
+	// magic user to have unasigned 
+	public function __construct ($id = ID_UNDEFINED)
+	{
+		global $project;
+		if ($id < 1)
+		{
+			$this->twitter_user = 'unassigned';
+			$this->id_project = $project->id();
+		}
+		else
+		{
+			parent::__construct($id);
+		}
+	}
+	
+	
+	static public function from_name($twitter_user, project_project $project)
+	{
+		global $ari;
+		// we check if there is an user with that twitter_user in the project, if so, return that user, else, create a new one, and return.
+		$string = $ari->db->qMagic($twitter_user);
+		$id_project = $ari->db->qMagic($project->id());
+		
+		$result = static::getList(false, false, false, false, false, false, false, "AND twitter_user = $string and id_project = $id_project");
+		
+		if ($result != false && count($result) == 1)
+		{
+			return $result[0];
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	// @optmize (certain cases of string might not get linked)
+	static public function link_people($string, project_project $project)
+	{
+		global $ari;
+		$string_array = explode(' ', $string);
+		$public_url = $project->public_url();
+		$i = 0;
+		foreach ($string_array as $possible)
+		{
+			if (substr($possible,0,1) == '@')
+			{
+				if ($person = static::from_name(substr($possible,1,strlen($possible)),$project))
+				{	
+					$name = $person->name();
+					$string_array[$i] = "<a href=\"{$public_url}/project/browse/person/{$name}\">@{$name}</a>";
+				}
+			}
+			$i++;
+		}
+		
+		return implode (' ',$string_array);
+	}
 	
 	static public function create_new_person($twitter_user, project_project $project)
 	{
@@ -50,42 +107,22 @@ class project_person extends OOB_model_type
 		}
 		else
 		{
-			// vemos si hay otro oob_user, que comparta ese registro de twitter, y si es así, lo linkeamos a ese oob_user en vez de crear otro.
-			$result = static::getList(false, false, false, false, false, false, false, "AND twitter_user = $string and id_project != $id_project");
-			if ($result != false)
+			// if it does not validate as an email addres, its probably misstiped.
+			if (!oob_validatetext::isEmail($twitter_user . '@fake.mail'))
 			{
-				$new_user = $result[0]->get('user');
+				return false;
 			}
-			else
-			{
-				// create a user with 
-				$new_user = new oob_user ();
-				$new_user->set('uname',$twitter_user . '-' . $project->id());
-				$new_user->set('email',$twitter_user . '@pending.mail');
-				$new_user->set('password',date('Ymd'));
-				
-				// capaz q acá no tenga que estar en estado enabled de arranque...
-				$new_user->set('status',1);
-				if ($new_user->store())
-				{
-					$new_user->linkStandardGroup();
-				}
-			}
-					
+		
+			// create project_person
+			$new_person = new project_person();
+			$new_person->set('twitter_user',$twitter_user);
+			$new_person->set('added',new Date());
+			$new_person->set('user',new oob_user(0)); // no user assigned at this point
+			$new_person->set('project',$project);
 			
-			if (!count($new_user->error()->getErrors()))
+			if ($new_person->store())
 			{
-				// create project_person
-				$new_person = new project_person();
-				$new_person->set('twitter_user',$twitter_user);
-				$new_person->set('added',new Date());
-				$new_person->set('user',$new_user);
-				$new_person->set('project',$project);
-				
-				if ($new_person->store())
-				{
-					return $new_person;
-				}				
+				return $new_person;
 			}
 			
 			return false;
@@ -94,10 +131,15 @@ class project_person extends OOB_model_type
 	}
 	
 	
-	static public function exists(oob_user $user)
+	static public function exists($user)
 	{
 		global $ari;
 			
+		if (!is_a($user,'oob_user'))
+		{
+			return false;
+		}
+		
 		$string = $ari->db->qMagic($user->id());
 		
 		if (count($result = static::getList(false, false, false, false, false, false, false, "AND id_user = $string")) == 1)
@@ -153,7 +195,31 @@ class project_person extends OOB_model_type
 	{
 		return $this->get('twitter_user');
 	}
-			
+	
+	public function picture ()
+	{
+		if ($this->get('picture') == '')
+		{
+			return '/images/avatar.gif';
+		}
+		else
+		{
+			return $this->get('picture');
+		}
+	}
+	
+	public function can_invite()
+	{
+		if ($this->get('user')->id() > 1)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
 	private function _send_mail($title,$template)
 	{
 		global $ari;
@@ -169,8 +235,12 @@ class project_person extends OOB_model_type
 		$to_address = $user->get('email');
 		$to_name = $this->name();
 	
+		// datos de la persona
 		$plantilla->assign('name' ,$this->name());
-		$plantilla->assign('project',$this->get('project')->name());
+		
+		// datos del proyecto
+		$plantilla->assign('project_name',$this->get('project')->name());
+		$plantilla->assign('project_url',$this->get('project')->public_url());
 		
 		// datos del usuario
 		$plantilla->assign('user',$user->get('uname'));
@@ -178,18 +248,25 @@ class project_person extends OOB_model_type
 		
 		
 		//////////// mail send
-		require_once ($ari->get('enginedir').DIRECTORY_SEPARATOR .'librerias'.DIRECTORY_SEPARATOR.'mimemessage'.DIRECTORY_SEPARATOR.'smtp.php');
-		require_once ($ari->get('enginedir').DIRECTORY_SEPARATOR .'librerias'.DIRECTORY_SEPARATOR.'mimemessage'.DIRECTORY_SEPARATOR.'email_message.php');
-		require_once ($ari->get('enginedir').DIRECTORY_SEPARATOR .'librerias'.DIRECTORY_SEPARATOR.'mimemessage'.DIRECTORY_SEPARATOR.'smtp_message.php');
+		require_once( $ari->get('enginedir') . DIRECTORY_SEPARATOR . 'librerias' . DIRECTORY_SEPARATOR . 'mimemessage' . DIRECTORY_SEPARATOR . 'smtp.php' );
+		require_once( $ari->get('enginedir') . DIRECTORY_SEPARATOR . 'librerias' . DIRECTORY_SEPARATOR . 'mimemessage' . DIRECTORY_SEPARATOR . 'email_message.php' );
+		require_once( $ari->get('enginedir') . DIRECTORY_SEPARATOR . 'librerias' . DIRECTORY_SEPARATOR . 'mimemessage' . DIRECTORY_SEPARATOR . 'smtp_message.php' );
+
+		//estas dos referencias las agregue yo  por que me las pedia mi smtp
+		require_once( $ari->get('enginedir') . DIRECTORY_SEPARATOR . 'librerias' . DIRECTORY_SEPARATOR . 'sasl' . DIRECTORY_SEPARATOR . 'sasl.php' );
+		require_once( $ari->get('enginedir') . DIRECTORY_SEPARATOR . 'librerias' . DIRECTORY_SEPARATOR . 'sasl' . DIRECTORY_SEPARATOR . 'login_sasl_client.php' );
+		require_once( $ari->get('enginedir') . DIRECTORY_SEPARATOR . 'librerias' . DIRECTORY_SEPARATOR . 'sasl' . DIRECTORY_SEPARATOR . 'cram_md5_sasl_client.php' );
+
+		
 		$email_message=new smtp_message_class;
 		$email_message->localhost="";
 		$email_message->smtp_host=$ari->config->get('delivery', 'main');
 		$email_message->smtp_direct_delivery=0;
 		$email_message->smtp_exclude_address="";
-		$email_message->smtp_user="";
+		$email_message->smtp_user=$ari->config->get('smtpuser', 'main');
 		$email_message->smtp_realm="";
 		$email_message->smtp_workstation="";
-		$email_message->smtp_password="";
+		$email_message->smtp_password=$ari->config->get('smtppass', 'main');
 		$email_message->smtp_pop3_auth_host="";
 		$email_message->smtp_debug=0;
 		$email_message->smtp_html_debug=1;

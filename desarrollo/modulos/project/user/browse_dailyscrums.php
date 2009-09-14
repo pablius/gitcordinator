@@ -28,9 +28,9 @@ foreach ($results as $ds)
 {
 	$ds_result[$s]['person'] = $ds->get('person')->name();
 	$ds_result[$s]['sprint'] = $ds->get('sprint')->number();
-	$ds_result[$s]['yesterday'] = $ds->get('yesterday');
-	$ds_result[$s]['today'] = $ds->get('today');
-	$ds_result[$s]['blocks'] = $ds->get('blocks');
+	$ds_result[$s]['yesterday'] = project_tag::link_tags(project_person::link_people($ds->get('yesterday'),$project),$project);
+	$ds_result[$s]['today'] = project_tag::link_tags(project_person::link_people($ds->get('today'),$project),$project);
+	$ds_result[$s]['blocks'] = project_tag::link_tags(project_person::link_people($ds->get('blocks'),$project),$project);
 	$ds_result[$s]['date'] = $ds->get('date')->format('%D');
 	$s++;
 }

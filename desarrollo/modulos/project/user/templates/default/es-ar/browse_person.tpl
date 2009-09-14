@@ -20,7 +20,7 @@
 			</div>
 			<div class="story-meta">
 				<ul>
-					<li class="number"><a href="single-story.html">{$stories[s].id}</a></li>
+					<li class="number"><a href="{$webdir}/project/story/view/{$stories[s].number}">{$stories[s].number}</a></li>
 				</ul>
 			</div>
 			

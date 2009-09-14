@@ -31,7 +31,7 @@ else
 	$s = 0;
 	foreach ($results as $story)
 	{
-		$stories[$s]['id'] = $story->id();
+		$stories[$s]['number'] = $story->number();
 		$stories[$s]['name'] = $story->name();
 		$stories[$s]['sprint'] = $story->get('sprint')->number();
 		$stories[$s]['tags'] = $story->tags();

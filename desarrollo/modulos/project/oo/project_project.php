@@ -27,6 +27,11 @@ class project_project extends OOB_model_type
 	public $id_repo;
 	public $id_user;
 	
+	public function public_url()
+	{
+		return 'http://' . $this->get('url_repo') . '.clarisapp.com';
+	}
+	
 	static public function url_detect($url)
 	{
 		global $ari;
@@ -38,7 +43,7 @@ class project_project extends OOB_model_type
 		$project_url = str_replace('.clarisapp.com','',$_SERVER['SERVER_NAME']);
 		
 		
-		if (in_array($project_url,array('www','beta','admin','clarisapp.com')))
+		if (in_array($project_url,array('www','beta','admin','clarisapp.com','blog')))
 		{
 			if ($url[0] == 'setup' && $ari->module->name() == 'project')
 			{

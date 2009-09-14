@@ -1001,3 +1001,10 @@ table.add-story input {
 	background: #D6EDD7;
 	color: #fff;
 }
+
+
+.story_list{
+	min-height:50px;
+	height:auto !important;
+	height:50px;
+}

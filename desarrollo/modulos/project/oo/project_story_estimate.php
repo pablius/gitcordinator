@@ -18,6 +18,12 @@ class project_story_estimate extends OOB_model_type
 	// definimos los attr del objeto
 	public $description;
 	public $value;
+	
+	public function name()
+	{
+		return $this->get('description');
+	}
+	
 }
 ?>
 

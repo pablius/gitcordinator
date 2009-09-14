@@ -10,9 +10,7 @@ $speed_array = array();
 $s = 0;
 foreach ($speeds as $speed)
 {
-	$speed_array[$s]['name'] = $speed->name();
-	$speed_array[$s]['id'] = $speed->id();
-	$s++;
+	$speed_array[$speed->id()] = $speed->name();
 }
 
 if (($project->get('user')->id() != $ari->user->id()))
@@ -23,9 +21,28 @@ if (($project->get('user')->id() != $ari->user->id()))
 // store
 if (count ($_POST))
 {
-	$project->set ('name', $_POST['email']);
+	$project->set ('name', $_POST['name']);
+	
+	if (!isset ($_POST['repo_local']) || !in_array($_POST['repo_local'],array(0,1)))
+	{
+		$_POST['repo_local'] = 0;
+	}
+	
 	$project->set ('repo_local', $_POST['repo_local']);
+	
+	if (!isset ($_POST['sprint_speed']) || !array_key_exists($_POST['sprint_speed'],$speed_array))
+	{
+		$_POST['sprint_speed'] = 1;
+	}
+	
+	
 	$project->set ('sprint_speed', new project_sprint_speed($_POST['sprint_speed']));
+	
+	if($project->store())
+	{
+		header( "Location: " . $ari->get('webaddress') . '/project/dashboard');
+		exit;
+	}
 
 	if ($errores = $project->error()->getErrors())
 	{
@@ -39,6 +56,7 @@ if (count ($_POST))
 }
 
 // variables
+$ari->t->assign("speed_array", $speed_array);
 $ari->t->assign("name", $ct->dropHTML($project->get('name')));
 $ari->t->assign("repo_local", $ct->dropHTML($project->get('repo_local')));
 $ari->t->assign("sprint_speed", $ct->dropHTML($project->get('sprint_speed')->id()));

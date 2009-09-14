@@ -1,10 +1,56 @@
-<div id="inner-wrapper">
+{literal}
+<script type="text/javascript">
+	$(function() {
+		$(".story_list").sortable(
+								{  opacity: 0.6, 
+								   revert: true, 
+								   scroll: true,
+								   dropOnEmpty :true,
+								   connectWith: ['#current_sprint','#product_backlog','#unplaned_stories'],
+								   receive : function () 
+														{ 
+															//var current_count = $("#current_sprint div.story").size();
+															//alert (current_count);
+															
+															var current =  $('#current_sprint').sortable('serialize');
+															var pb =  $('#product_backlog').sortable('serialize');
+															var unplanned = $('#unplaned_stories').sortable('serialize');
+															
+															// update claris according to screen data
+															 $.post("/project/dashboard_store", { current: current, pb: pb, unplanned: unplanned},
+															   function(data){
+																												
+																 if (data.success == true)
+																 {
+																	$('#current_sprint_count').html(data.data.current_sprint_count);
+																	$('#pb_count').html(data.data.pb_count);
+																	$('#unplaned_count').html(data.data.unplaned_count);
+																 }
+																 else
+																 {
+																	alert ('We couldn\'t store your dashboard. Please refresh');
+																 }
+															   },"json");
+															
+														} 
+								});
+								
+	
+		$(".story_list").disableSelection();
+		
+	
+		
+	});
+	</script>
+
+{/literal}
 	<div id="page-header">
 		<div id="page-header-title">
 			<h2>Sprint {$sprint_number}: <span class="editable">{$sprint_goal}</span></h2>
 		
 			<ul>
 				<li><a href="/project/sprint_finish">Finish this sprint</a></li>
+				<li><a href="/project/daily_scrum">Daily scrum</a></li>
 			</ul>
 		</div>
 		
@@ -31,14 +77,15 @@
 		<div class="col span-6">
 			<div class="module">
 				<div class="module-header">
-					<h3>In Progress <small>(this sprint)</small></h3>
+					<h3>In Progress <small>(this sprint)</small> <span id="current_sprint_count">{$current_sprint_total}</span></h3>
 				</div>
-				
+				<div id="current_sprint" class="story_list">
 				{section name=cs loop=$current_sprint}
-				<div class="story">
+				
+				<div class="story" id="story_{$current_sprint[cs].number}">
 					<div class="story-meta col last span-1">
 						<ul>
-							<li class="number"><a href="/project/story/view/{$current_sprint[cs].id}">{$current_sprint[cs].id}</a></li>
+							<li class="number"><a href="/project/story/view/{$current_sprint[cs].number}">{$current_sprint[cs].number}</a></li>
 						</ul>
 					</div>
 					
@@ -64,9 +111,9 @@
 					</div>
 					
 				</div>
-				{sectionelse}
-				<p>This sprint has no stories yet. You can drag items from "Unplaned" or "To-do" here, and start working.
+
 				{/section}
+				</div>
 				
 			
 				
@@ -78,14 +125,16 @@
 		<div class="col span-3">
 			<div class="module">
 				<div class="module-header">
-					<h3>To-do <small>(product backlog)</small></h3>
+					<h3>To-do <small>(product backlog)</small> <span id="pb_count">{$product_backlog_total}</span></h3>
 				</div>
 				
+				<div id="product_backlog" class="story_list">
 				{section name=pb loop=$product_backlog}
-				<div class="story">
+				
+				<div class="story"  id="story_{$product_backlog[pb].number}">
 					<div class="story-meta col last span-1">
 						<ul>
-							<li class="number"><a href="/project/story/view/{$product_backlog[pb].id}">{$product_backlog[pb].id}</a></li>
+							<li class="number"><a href="/project/story/view/{$product_backlog[pb].number}">{$product_backlog[pb].number}</a></li>
 						</ul>
 					</div>
 					
@@ -111,8 +160,9 @@
 					</div>
 					
 				</div>
-				{/section}
 				
+				{/section}
+				</div>
 
 				
 	
@@ -122,13 +172,15 @@
 		<div class="col last span-3">
 			<div class="module">
 				<div class="module-header">
-					<h3>Unplanned Stories</h3>
+					<h3>Unplanned Stories <span id="unplaned_count">{$unplaned_total}</span></h3>
 				</div>
+				<div id="unplaned_stories" class="story_list">
 				{section name=u loop=$unplaned}
-				<div class="story">
+				
+				<div class="story" id="story_{$unplaned[u].number}">
 					<div class="story-meta col last span-1">
 						<ul>
-							<li class="number"><a href="/project/story/view/{$unplaned[u].id}">{$unplaned[u].id}</a></li>
+							<li class="number"><a href="/project/story/view/{$unplaned[u].number}">{$unplaned[u].number}</a></li>
 						</ul>
 					</div>
 					
@@ -154,8 +206,9 @@
 					</div>
 					
 				</div>
+				
 				{/section}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>

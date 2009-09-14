@@ -1,5 +1,5 @@
 ﻿<?
-
+$ct = new OOB_cleantext();
 $ari->db->startTrans();
 
 // we try to create the project with the given name, if we fail, we send the user back to step 1 (it should never happen, because we are validating it with js in the previous screen
@@ -63,7 +63,12 @@ else
 	
 	// create person for this user.
 	$new_person = new project_person();
-	$new_person->set('twitter_user',$ari->user->get('uname'));
+	
+	// we'll set twitter user name as a the user part of his email address
+	$arroba = strpos($ari->user->get('uname'),'@');
+	$twitter_user = substr($ari->user->get('uname'),0,$arroba);
+	
+	$new_person->set('twitter_user',$twitter_user);
 	$new_person->set('added',new Date());
 	$new_person->set('user',$ari->user);
 	$new_person->set('project',$new_project);
@@ -73,14 +78,12 @@ else
 		$ari->db->FailTrans();
 	}
 	
-		
-	
 }
 
 $ari->db->completeTrans();
 
-$ari->t->assign('url', $_POST['name'] . '.clarisapp.com');
-$ari->t->assign('user', $ari->user->get('uname') . '@' . $_POST['name'] . '.clarisapp.com');
+$ari->t->assign('url', $ct->dropHTML($_POST['name']) . '.clarisapp.com');
+$ari->t->assign('user', $ct->dropHTML($ari->user->get('uname'));
 $ari->t->display($ari->module->usertpldir(). DIRECTORY_SEPARATOR . "setup_2.tpl");
  
 ?>

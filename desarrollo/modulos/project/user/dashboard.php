@@ -11,11 +11,12 @@ $ari->t->assign('sprint_goal',$project->current_sprint()->name());
 // get stories for unplaned
 $unplaned_items = array();
 $u = 0;
-if ($unplaned = project_story::getRelated($project->unplaned()))
+if ($unplaned = project_story::getRelated($project->unplaned(),false,'relevance'))
 {
 	foreach ($unplaned as $u_story)
 	{
-		$unplaned_items[$u]['id'] = $u_story->id();
+		$unplaned_items[$u]['number'] = $u_story->number();
+		$unplaned_items[$u]['relevance'] = $u_story->get('relevance');
 		$unplaned_items[$u]['name'] = $u_story->name();
 		$unplaned_items[$u]['asigned'] = $u_story->asigned()->name();
 		$unplaned_items[$u]['tags'] = $u_story->tags();	
@@ -24,15 +25,17 @@ if ($unplaned = project_story::getRelated($project->unplaned()))
 }
 
 $ari->t->assign('unplaned',$unplaned_items);
+$ari->t->assign('unplaned_total',$project->unplaned()->total_estimate());
 
 // get stories for pb
 $pb_items = array();
 $p = 0;
-if ($pb = project_story::getRelated($project->product_backlog()))
+if ($pb = project_story::getRelated($project->product_backlog(),false,'relevance'))
 {
 	foreach ($pb as $story)
 	{
-		$pb_items[$p]['id'] = $story->id();
+		$pb_items[$p]['number'] = $story->number();
+		$pb_items[$p]['relevance'] = $story->get('relevance');
 		$pb_items[$p]['name'] = $story->name();
 		$pb_items[$p]['asigned'] = $story->asigned()->name();
 		$pb_items[$p]['tags'] = $story->tags();
@@ -40,16 +43,17 @@ if ($pb = project_story::getRelated($project->product_backlog()))
 	}
 }
 $ari->t->assign('product_backlog',$pb_items);
-
+$ari->t->assign('product_backlog_total',$project->product_backlog()->total_estimate());
 
 // get stories for current_sprint
 $current_items = array();
 $c = 0;
-if ($cb = project_story::getRelated($project->current_sprint()))
+if ($cb = project_story::getRelated($project->current_sprint(),false,'relevance'))
 {
 	foreach ($cb as $story)
 	{
-		$current_items[$c]['id'] = $story->id();
+		$current_items[$c]['number'] = $story->number();
+		$current_items[$c]['relevance'] = $story->get('relevance');
 		$current_items[$c]['name'] = $story->name();
 		$current_items[$c]['asigned'] = $story->asigned()->name();
 		$current_items[$c]['tags'] = $story->tags();
@@ -57,7 +61,7 @@ if ($cb = project_story::getRelated($project->current_sprint()))
 	}
 }
 $ari->t->assign('current_sprint',$current_items);
-
+$ari->t->assign('current_sprint_total',$project->current_sprint()->total_estimate());
 
 $ari->t->display($ari->module->usertpldir(). DIRECTORY_SEPARATOR . "dashboard.tpl");
  

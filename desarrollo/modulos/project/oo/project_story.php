@@ -12,6 +12,7 @@ class project_story extends OOB_model_type
 		'id_estimate'		=> 'object-project_story_estimate',
 		'id_remaining'		=> 'object-project_story_estimate',
 		'name'				=> 'isClean,isCorrectLength-0-300',
+		'number'				=> 'isInt',
 		'demo'				=> 'isClean,isCorrectLength-0-9999',
 		'description'		=> 'isClean,isCorrectLength-0-9999',
 		'id_asigned' 		=> 'object-project_person',
@@ -23,7 +24,7 @@ class project_story extends OOB_model_type
 	
 	static protected $table = 'project_story';
 	static protected $class = __CLASS__;	
-	static $orders = array('start','goal'); 
+	static $orders = array('relevance','number'); 
 	
 	// definimos los attr del objeto
 	public $id_state;
@@ -33,6 +34,7 @@ class project_story extends OOB_model_type
 	public $id_estimate;
 	public $id_remaining;
 	public $name;
+	public $number;
 	public $demo;
 	public $description;
 	public $id_asigned;
@@ -44,6 +46,11 @@ class project_story extends OOB_model_type
 	public function name()
 	{
 		return $this->get('name');
+	}
+	
+	public function number()
+	{
+		return $this->get('number');
 	}
 	
 	public function asigned()
@@ -70,6 +77,24 @@ class project_story extends OOB_model_type
 			}
 		}
 		return $return;
+	}
+	
+	static public function number_constructor ($number, project_project $project)
+	{
+		global $ari;
+		$string = $ari->db->qMagic($number);
+		$id_project = $ari->db->qMagic($project->id());
+		
+		$result = static::getList(false, false, false, false, false, false, false, "AND number = $string and id_project = $id_project");
+		
+		if ($result != false && count($result) == 1)
+		{
+			return $result[0];
+		}
+		else
+		{
+			return false;
+		}	
 	}
 	
 	static public function new_from_string($string, project_sprint $sprint)
@@ -129,7 +154,7 @@ class project_story extends OOB_model_type
 		// create object and save.
 		$new_story = new project_story();
 		$new_story->set('state',new project_story_status(1));
-		$new_story->set('relevance',1);
+		// $new_story->set('relevance',1);
 		
 		$new_story->set('project',$sprint->get('project'));
 		$new_story->set('sprint',$sprint);
@@ -164,6 +189,151 @@ class project_story extends OOB_model_type
 			return false;
 		}
 		
+	}
+	
+	public function store()
+	{
+		global $ari, $project;
+		
+		$ari->db->startTrans();
+		
+			
+		if ($this->id === NULL)
+		{
+			$id_project = $ari->db->qMagic($project->id());
+			$table = static::getTable();
+			
+			// get the previous number from the DB
+			$sql = "SELECT MAX(number)
+					FROM $table 
+					WHERE
+					id_project = $id_project
+				   ";
+			
+			$savem= $ari->db->SetFetchMode(ADODB_FETCH_NUM);
+			$rs = $ari->db->Execute($sql); 
+			$ari->db->SetFetchMode($savem);
+				
+			if ($rs && !$rs->EOF) 
+			{ 
+				$this->set('number', $rs->fields[0] + 1);
+				$rs->Close();
+			}
+			else
+			{
+				$this->set('number',1);
+			}
+			
+			// get the previous number from the DB
+			$sql = "SELECT MAX(relevance)
+					FROM $table 
+					WHERE
+					id_project = $id_project
+				   ";
+			
+			$savem= $ari->db->SetFetchMode(ADODB_FETCH_NUM);
+			$rs = $ari->db->Execute($sql); 
+			$ari->db->SetFetchMode($savem);
+				
+			if ($rs && !$rs->EOF) 
+			{ 
+				$this->set('relevance', $rs->fields[0] + 1);
+				$rs->Close();
+			}
+			else
+			{
+				$this->set('relevance',1);
+			}
+			
+			
+		}
+			
+		if (!parent::store())
+		{
+			$ari->db->failTrans();
+		}
+		
+		if ($ari->db->completeTrans())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	static public function getRelated($object, $count = false, $sort = false, $sort_mode=false)
+	{
+		// buscamos los datos del objeto
+		global $ari;
+		$valor = $ari->db->qMagic($object->id());
+		$object_class = get_class($object);
+				
+		$our_class = static::getClass();
+		
+		$sql = false;
+	
+		foreach($our_class::$public_properties as $campo => $constraint)
+		{
+			// tiene que estar definido que hay relaciones multiples en nuestro objeto
+			if (strcasecmp('object-' . $object_class,$constraint) == 0) //eregi('(^object-'.strtolower($object_class).')(.*)',strtolower($constraint)))
+			{
+				// pedimos un list de nuestros objetos que lo tengan a él como hijo
+				$sql = "AND $campo = $valor";
+			}
+			elseif (strcasecmp('object-relation',$constraint) == 0)//(eregi('(^object-relation)(.*)',strtolower($constraint)))
+			{
+				// si las relaciones son del tipo "object-relation"
+				$object_valor = $ari->db->qMagic($object_class);
+				$object_campo = 'class' . substr($campo,2,strlen($campo));
+				
+				$sql = "AND $campo = $valor AND $object_campo = $object_valor ";				
+			}
+			
+		}
+		
+		if ($sql != false)
+		{
+			if (!$count)
+			{
+				return static::getList(false, false, $sort, $sort_mode, false, false, false, $sql);
+			}
+			else
+			{
+				return static::getListCount(false, false, false, $sql);
+			}
+		}
+		
+		return false;		
+	}
+	
+	
+	static public function max_relevance_number(project_project $project)
+	{
+		global $ari;
+		$id_project = $ari->db->qMagic($project->id());
+		$table = static::getTable();
+		$return = 0;
+		
+		// get the previous number from the DB
+		$sql = "SELECT MAX(relevance)
+				FROM $table 
+				WHERE
+				id_project = $id_project
+			   ";
+		
+		$savem= $ari->db->SetFetchMode(ADODB_FETCH_NUM);
+		$rs = $ari->db->Execute($sql); 
+		$ari->db->SetFetchMode($savem);
+				
+		if ($rs && !$rs->EOF) 
+		{ 
+			$return = $rs->fields[0];
+			$rs->Close();
+		}
+		
+		return $return;
 	}
 
 }

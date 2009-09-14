@@ -17,7 +17,7 @@
 			<div class="story-description">
 				<div class="story-title">
 					<small>Date: {$ds_result[s].date|relativedate}</small><br>
-					<small>Person: {$ds_result[s].person}</small><br>
+					<small>Person: <a href="{$webdir}/project/browse/person/{$ds_result[s].person}">@{$ds_result[s].person}</a></small><br>
 					<small>Sprint: {$ds_result[s].sprint}</small><br>
 					<small>Yesterday: {$ds_result[s].yesterday}</small><br>
 					<small>Today: {$ds_result[s].today}</small><br>
