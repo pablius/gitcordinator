@@ -14,7 +14,8 @@ class project_tag extends OOB_model_type
 	
 	static protected $table = 'project_tag';
 	static protected $class = __CLASS__;	
-	static $orders = array('tag'); 
+	static $orders = array('tag');
+	protected $hard_delete = true;
 	
 	// definimos los attr del objeto
 	public $tag;

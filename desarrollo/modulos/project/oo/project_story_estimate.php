@@ -7,7 +7,8 @@ class project_story_estimate extends OOB_model_type
 	static protected $public_properties = array(
 	
 		'description' 		=> 'isClean,isCorrectLength-0-140',
-		'value' 			=> 'isInt'
+		'value' 			=> 'isInt',
+		'css' 				=> 'isClean',
 		
 	); // property => constraints
 	
@@ -18,12 +19,13 @@ class project_story_estimate extends OOB_model_type
 	// definimos los attr del objeto
 	public $description;
 	public $value;
+	public $css;
 	
 	public function name()
 	{
 		return $this->get('description');
 	}
-	
+		
 }
 ?>
 

@@ -3,7 +3,7 @@
 		<h2>{$number} - {$name}</h2>
 	
 		<ul>
-			<li>by <a href="{$webdir}/browse/person/{$assigned}">@{$asigned}</a>, {$date|relativedate}</li>
+			<li>by <a href="{$webdir}/project/browse/person/{$assigned}">@{$assigned}</a>, {$date|relativedate}</li>
 		</ul>
 	</div>
 	

@@ -11,7 +11,7 @@ class project_story extends OOB_model_type
 		'id_sprint' 		=> 'object-project_sprint',
 		'id_estimate'		=> 'object-project_story_estimate',
 		'id_remaining'		=> 'object-project_story_estimate',
-		'name'				=> 'isClean,isCorrectLength-0-300',
+		'name'				=> 'isClean,isCorrectLength-1-300',
 		'number'				=> 'isInt',
 		'demo'				=> 'isClean,isCorrectLength-0-9999',
 		'description'		=> 'isClean,isCorrectLength-0-9999',
@@ -45,7 +45,7 @@ class project_story extends OOB_model_type
 
 	public function name()
 	{
-		return $this->get('name');
+		return trim($this->get('name'));
 	}
 	
 	public function number()
@@ -60,12 +60,27 @@ class project_story extends OOB_model_type
 	
 	public function created()
 	{
-		return project_person::exists($this->get('created'));
+		return $this->get('created');
+	}
+	
+	public function meta()
+	{
+		$return = '';
+		$return .= $this->name();
+		$return .= ' @' . $this->get('asigned')->name();
+		
+		if (count($tags = $this->tags()))
+		{
+			$tags = '#' . join(' #',$tags);
+			$return .= ' ' . $tags;
+		}
+
+		return $return;
 	}
 	
 	public function tags()
 	{
-		$return = false;
+		$return = array();
 		if ($tags = project_tag::getRelated($this))
 		{
 			$i = 0;
@@ -96,6 +111,74 @@ class project_story extends OOB_model_type
 			return false;
 		}	
 	}
+	
+	
+	public function set_from_meta($string)
+	{
+		global $ari;
+		$string = trim($string);
+		
+		if (strlen($string) < 5)
+		{
+			$ari->error()->addError('META_SHORT');
+			return false;
+		}
+		
+		$datos_string = explode(' ',$string);
+		$tags = array();
+		
+		// check if there is a user
+		$asigned_to = $ari->user;
+		$user_count = 0;
+		$twitter_user = '';
+		foreach ($datos_string as $dato)
+		{
+			if (substr($dato,0,1) == '@')
+			{
+				$user_count++;
+				$twitter_user = substr($dato,1,strlen($dato));
+			}
+			
+			if (substr($dato,0,1) == '#')
+			{
+				$tags[] = substr($dato,1,strlen($dato));
+			}
+			
+		}
+		
+		// only one user per story
+		if ($user_count > 1)
+		{
+			$this->error()->addError('META_MULTIPLEUSERS');
+			return false;
+		}
+		elseif ($user_count == 1 && $twitter_user != '')
+		{
+			
+			if (($asigned_to = project_person::create_new_person($twitter_user,$this->get('sprint')->get('project'))) == false)
+			{
+				$ari->error()->addError('META_PERSON_FAIL');
+				return false;
+			}
+		}
+		else
+		{
+			$asigned_to = $this->get('asigned');
+		}
+		
+		$string = str_replace('@'. $twitter_user,'',$string);
+		foreach ($tags as $tag)
+		{
+			$string = str_replace('#'. $tag,'',$string);
+		}
+		
+		$this->set('name',trim($string));
+		$this->set('asigned',$asigned_to);
+		
+		return $tags;
+		
+	}
+	
 	
 	static public function new_from_string($string, project_sprint $sprint)
 	{
@@ -145,10 +228,10 @@ class project_story extends OOB_model_type
 				$ari->db->FailTrans();$ari->db->completeTrans();
 				return false;
 			}
-			/*else
-			{
-				$asigned_to = $asigned_to->get('user');
-			}*/
+		}
+		else
+		{
+			$asigned_to = project_person::exists($ari->user);		
 		}
 		
 		// create object and save.
@@ -161,7 +244,15 @@ class project_story extends OOB_model_type
 		
 		$new_story->set('estimate',new project_story_estimate(13));
 		$new_story->set('remaining',new project_story_estimate(13));
-		$new_story->set('name',str_replace('#','',str_replace($tags,'',str_replace('@'. $twitter_user,'',$string))));
+		
+		
+		$string = str_replace('@'. $twitter_user,'',$string);
+		foreach ($tags as $tag)
+		{
+			$string = str_replace('#'. $tag,'',$string);
+		}
+		
+		$new_story->set('name',trim($string));
 
 		$new_story->set('asigned',$asigned_to);
 		$new_story->set('created',project_person::exists($ari->user));
@@ -208,6 +299,7 @@ class project_story extends OOB_model_type
 					FROM $table 
 					WHERE
 					id_project = $id_project
+					AND status = '1'
 				   ";
 			
 			$savem= $ari->db->SetFetchMode(ADODB_FETCH_NUM);
@@ -229,6 +321,7 @@ class project_story extends OOB_model_type
 					FROM $table 
 					WHERE
 					id_project = $id_project
+					AND status = '1'
 				   ";
 			
 			$savem= $ari->db->SetFetchMode(ADODB_FETCH_NUM);
@@ -321,6 +414,7 @@ class project_story extends OOB_model_type
 				FROM $table 
 				WHERE
 				id_project = $id_project
+				AND status = '1'
 			   ";
 		
 		$savem= $ari->db->SetFetchMode(ADODB_FETCH_NUM);

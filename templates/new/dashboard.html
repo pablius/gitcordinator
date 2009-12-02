@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="master" charset="utf-8" />
+</head>
+
+<body>
+
+<div id="session">
+	<ul>
+		<li>Claris</li>
+		<!-- <li><a href="upgrade.html" class="ok">upgrade your account</a> (you are using 90% of your available space)</li> -->
+		<li><a href="logout.html">logout</a></li>
+		<li><a href="project-settings.html">project settings</a></li>
+		<li><a href="people.html">people</a></li>
+		<li><a href="profile.html">rodrigogalindez</a></li>
+	</ul>
+</div>
+
+<div class="notice success span-12" style="display: none;">
+	<p>Success! You have successfully invited Pablo Micoloni to Claris. <a href="">Close this message</a>.</p>
+</div>
+
+<div id="wrapper" class="span-12">
+	<h1>
+		<span class="editable">Edit your project name</span>
+		<!-- <input type="text" name="some_name" value="Edit your project name" id="some_name" style="width: 98.9%; font-size: 1em;" /> -->
+	</h1>
+	
+	<div id="nav" class="clearfix">
+		<ul>
+			<li><a href="dashboard.html" class="dashboard active">Dashboard</a></li>
+			<li><a href="browse.html" class="browse">Browse</a></li>
+			<li><a href="messages.html" class="messages">Messages</a></li>
+			<li><a href="metrics.html" class="metrics">Metrics</a></li>
+		</ul>
+	</div>
+	
+	<div id="inner-wrapper" class="clearfix">
+		<div id="page-header" class="clearfix">
+			<div id="page-header-title">
+				<h2>Dashboard</h2>
+				
+				<ul>
+					<li><a href="daily-scrum.html">Your daily scrum</a></li>
+				</ul>
+			</div>
+			
+			<div id="page-header-action">
+				<input type="text" name="some_name" id="some_name" value="Redesign login box @username #tag" />
+				
+				<ul>
+					<li class="loader"><a href="" class="mini-button">Add story</a></li>
+					<li class="tooltip"><a href="">Syntax help.</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="content-wrapper" class="clearfix">
+			<div class="col span-6">
+				<div class="section clearfix">
+					<div class="section-header clearfix">
+						<div class="section-header-meta clearfix">
+							<h3>This sprint: 
+								<span class="editable" title="Edit">Click to set a goal</span>
+								<!-- <input type="text" name="some_name" value="" id="some_name" /> -->
+							</h3>
+							
+							<ul>
+								<li><a href="">Add deadline</a></li>
+								<li><a href="">Finish this sprint</a></li>
+							</ul>
+						</div>
+						
+						<div class="section-header-info">
+							<span class="points" title="Total points">70</span>
+							<span class="date" title="Sprint date">15.09 &ndash; 18.09
+						</div>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow large" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="large"><span class="number" title="Story ID">232</span><a href="" title="View source for this story">File attaching not working</a></h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a> <a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-actions">
+							<ul>
+								<li><a href="" class="status" title="Accept this story">Accept</a></li>
+								<li><a href="" class="status" title="Reject this story">Reject</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow small" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="small"><span class="number" title="Story ID">154</span><a href="" title="View source for this story">Re-build error messages</a></h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-actions">
+							<ul>
+								<li><a href="" class="status" title="Start this story">Start</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="story clearfix edit" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow expanded" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+						<form action="dashboard-new_submit" method="get" accept-charset="utf-8">
+							<table class="story-details">
+								<tr>
+									<th colspan="2" style="padding-top: 0"><input type="text" name="meta" value="Passwords not working @gonzalocasas #interface" id="meta" /></th>
+								</tr>
+								<tr>
+									<th><label for="estimate">Estimate</label></th>
+									<td>
+										<select id="estimate" name="estimate">
+											<option>1</option>
+											<option>2</option>
+											<option>4</option>
+											<option>20</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="description">Description</label></th>
+									<td><textarea id="description" name="description"></textarea></td>
+								</tr>
+								<tr>
+									<th><label for="demo">How to demo</label></th>
+									<td><textarea id="demo" name="demo"></textarea></td>
+								</tr>
+								<tr>
+									<th />
+									<td>
+										<ul class="form-actions">
+											<li><a href="" class="mini-button" style="display: inline">Save</a> or <a href="">dismiss</a></li>
+											<li style="margin-top: -2px; float: right;"><a href="" class="icon-delete" title="Delete this story">Delete</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+						</form>
+						</div>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow medium" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="medium"><span class="number" title="Story ID">18</span><a href="" title="View source for this story">Database is broken</a></h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-actions">
+							<ul>
+								<li><a href="" class="status" title="Deliver this story">Deliver</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow x-small" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="x-small"><span class="number" title="Story ID">798</span><a href="" title="View source for this story">No hidden catch, no strings attached, just freelove</a></h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-actions">
+							<ul>
+								<li><a href="" class="status" title="Deliver this story">Deliver</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col last span-6">
+				<div class="section clearfix">
+					<div class="section-header clearfix">
+						<div class="section-header-meta clearfix">
+							<h3>Product Backlog</h3>
+							
+							<ul>
+								<li><a href="">Add deadline</a></li>
+								<li><a href="">Add sprint</a></li>
+							</ul>
+						</div>
+						
+						<div class="section-header-info">
+							<span class="points" title="Total points">380</span>
+						</div>
+					</div>
+					
+					<div class="sprint-marker unassigned">
+						<h4>Unassigned stories</h4>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow large" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="large">Rebuild is how we build a place</h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow small" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="small">This is how we build a place</h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="sprint-marker">
+						<h4>Sprint 2: <span class="editable">Set a goal</span> (15/09 &ndash; 18/09)</h4>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow small" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="small">File attaching not working</h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="story clearfix edit" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow expanded small" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<form action="dashboard-new_submit" method="get" accept-charset="utf-8">
+								<table class="story-details">
+									<tr>
+										<th colspan="2" style="padding-top: 0">
+											<input type="text" name="meta" value="No importa lo que digas vos @charlygarcia #music" id="meta" class="error"/>
+											<p class="tooltip">Wrong syntax. <a href="">Help</a>.</p>
+										</th>
+									</tr>
+									<tr>
+										<th><label for="estimate">Estimate</label></th>
+										<td>
+											<select id="estimate" name="estimate">
+												<option>1</option>
+												<option>2</option>
+												<option>4</option>
+												<option>20</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th><label for="description">Description</label></th>
+										<td>
+											<textarea id="description" name="description" class="error"></textarea>
+											<p class="tooltip">Can't be blank.</p>
+										</td>
+									</tr>
+									<tr>
+										<th><label for="demo">How to demo</label></th>
+										<td>
+											<textarea id="demo" name="demo"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<th />
+										<td>
+											<ul class="form-actions">
+												<li><a href="" class="mini-button" style="display: inline">Save</a> or <a href="">dismiss</a></li>
+												<li style="margin-top: -2px; float: right;"><a href="" class="icon-delete" title="Delete this story">Delete</a></li>
+											</ul>
+										</td>
+									</tr>
+								</table>								
+							</form>
+						</div>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow x-small" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="x-small">Pink Floyd</h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="sprint-marker">
+						<h4>Sprint 3: <span class="editable">Set a goal</span> (15/09 &ndash; 18/09)</h4>
+					</div>
+					
+					<div class="story clearfix" title="Drag this story">
+						<div class="story-expand">
+							<ul>
+								<li><a href="" class="icon-arrow medium" title="Edit this story">Edit</a></li>
+							</ul>
+						</div>
+						
+						<div class="story-description">
+							<h4 class="medium">This is how we build a place</h4>
+							
+							<ul>
+								<li><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<div id="footer-wrapper">
+		<div id="footer">
+			<div class="section">
+				<h3>About</h3>
+				
+				<ul>
+					<li><p><a href="">Blog</a></p></li>
+					<li><p><a href="">Contact</a></p></li>
+				</ul>
+			</div>
+			
+			<div class="section">
+				<h3>Help</h3>
+				
+				<ul>
+					<li><p><a href="">FAQ</a></p></li>
+					<li><p><a href="">Support</a></p></li>
+				</ul>
+			</div>
+			
+			<p class="copyright">Copyright © 2009, ourappname. All rights reserved.</p>
+			<p class="copyright"><a href="">Privacy Policy</a>. <a href="">Terms and Conditions</a>.</p>
+		</div>
+	</div>
+
+</body>
+</html>

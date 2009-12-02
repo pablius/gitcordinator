@@ -28,6 +28,7 @@ else
 	foreach ($results as $story)
 	{
 		$stories[$s]['number'] = $story->number();
+		$stories[$s]['text_class'] = $story->get('estimate')->get('css');
 		$stories[$s]['name'] = $story->name();
 		$stories[$s]['sprint'] = $story->get('sprint')->number();
 		$stories[$s]['tags'] = $story->tags();

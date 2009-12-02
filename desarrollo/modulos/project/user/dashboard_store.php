@@ -51,6 +51,8 @@ if (
 			if (!$story->store())
 			{
 				$result["success"] = false;
+				//$e = $story->error()->getErrors();
+				//$story->error()->addError(var_export($e,true),true);
 			}
 		}
 	}

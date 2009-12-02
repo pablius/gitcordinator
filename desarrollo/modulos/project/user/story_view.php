@@ -14,7 +14,7 @@ if (!$story = project_story::number_constructor($handle[2],$project))
 
 $ari->t->assign('name',$story->name());
 $ari->t->assign('number',$story->number());
-$ari->t->assign('asigned',$story->get('asigned')->name());
+$ari->t->assign('assigned',$story->get('asigned')->name());
 $ari->t->assign('date',$story->get('date')->format('%D'));
 $ari->t->assign('state',$story->get('state')->name());
 $ari->t->assign('estimate',$story->get('estimate')->name());

@@ -27,6 +27,19 @@ class project_project extends OOB_model_type
 	public $id_repo;
 	public $id_user;
 	
+	public function  isValid()
+	{
+		global $ari;
+		
+		if (!ctype_alnum($this->url_repo))
+		{
+			$this->error()->addError('NO_URL_REPO');
+		}
+		
+		return parent::isValid();
+	
+	}
+	
 	public function public_url()
 	{
 		return 'http://' . $this->get('url_repo') . '.clarisapp.com';
@@ -111,16 +124,31 @@ class project_project extends OOB_model_type
 
 		$result = static::getList(false, false, false, false, false, false, false, "AND url_repo = $url ");
 		
-		if (count($result) == 1)
+		if ($result != false && count($result) == 1)
 		{
 			return $result[0];				
 		}
-		else
+		
+		return false;
+	}
+	
+	static public function is_available($name)
+	{
+		global $ari;
+		
+		if (!ctype_alnum($name))
 		{
 			return false;
 		}
 		
-		
+		if (is_a(static::project_from_url($name),'project_project'))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 	
 	protected  function isDuplicated()

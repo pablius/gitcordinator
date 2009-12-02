@@ -1,75 +1,95 @@
-<div id="page-header">
-	<div id="page-header-title">
-		<h2>Project Settings</h2>
-	
+{literal}
+	<script type="text/javascript">
+	$(function() {
 		
-	</div>
-	
-	<div id="page-header-action">
 		
-	</div>
-</div>
+		
+		 $(document).ready(function() 
+		{
+			
+			$("#download_project").bind('click', pending);
+			$("#delete_project").bind('click', pending);
 
-<div id="content-wrapper">
+			
+		});
+		
+	});
+	</script>
 
-	
-	<form action="" method="post" accept-charset="utf-8">
-		<div class="field no-border">
-			<div class="col span-2">
-				<label for="name">Project Name</label>
+{/literal}
+
+
+<div id="inner-wrapper" class="clearfix">
+	<div id="page-header" class="clearfix">
+		<div id="page-header-title">
+			<h2>Project Settings</h2>
+		</div>
+	</div>
+
+	<div id="content-wrapper" class="clearfix">
+
+		
+		<form action="" method="post" accept-charset="utf-8">
+		
+			<div class="col span-8">
+				<table class="project-settings">
+					<tr>
+						<th><label for="length">Sprint length</label></th>
+						<td>
+							<select id="sprint_speed" name="sprint_speed">
+								{html_options options=$speed_array selected=$sprint_speed}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="">Use local repository</label></th>
+						<td>
+							<input type="checkbox" name="repo_local" value="1" {if $repo_local == 1}checked{/if} id="repo_local" />
+						</td>
+					</tr>
+					<tr>
+						<th />
+						<td>
+							<ul class="form-actions">
+								<li><input type="submit" name="store" value="Save" id="store" /></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
 			</div>
-			<div class="col last span-3">
-				<input type="text" name="name" value="{$name}" id="name" />
+			
+		</form>
+		
+		<div class="col last span-4">
+			<div class="section clearfix">
+				<div class="section-header clearfix">
+					<div class="section-header-meta clearfix">
+						<h3>Project Backup</h3>
+					</div>
+				</div>
+				
+				<div class="section-content">
+					<p>You can download a full copy of your project at Claris, just to be safe, or to play magic with it.</p>
+					<a href='#' id="download_project" class="mini-button">Download</a>
+				</div>
 			</div>
+			<!--
+			<div class="section clearfix">
+				<div class="section-header clearfix">
+					<div class="section-header-meta clearfix">
+						<h3>Delete project</h3>
+					</div>
+				</div>
+				
+				<div class="section-content">
+					<p>Deleting your project clears all data from our servers, including stories, people, and SVN. Of course this action can't be reversed, so be very careful.</p>
+					<a href='#' id="delete_project" class="mini-button">Delete all</a>
+				</div>
+			</div>
+			-->
 		</div>
 		
-		<div class="field no-border">
-			<div class="col span-2">
-				<label for="local">Use local repository</label>
-			</div>
-			<div class="col last span-3">
-				<input type="checkbox" name="repo_local" value="1" {if $repo_local == 1}checked{/if} id="repo_local" />
-			</div>
-			<div class="col last span-3">
-				Si el usuario no marca el check, acá tiene q salir un link para bajar los archivos para configurar su SVN local para que funcione con claris.
-			</div>
-		</div>
+			
+	</div>
 		
-		<div class="field no-border">
-			<div class="col span-2">
-				<label for="sprint_speed">Define sprint lenght</label>
-			</div>
-			<div class="col last span-3">
-				<select id="sprint_speed" name="sprint_speed">
-					{html_options options=$speed_array selected=$sprint_speed}
-				</select>
-			</div>
-		</div>
-		
-		
-		<div class="field">
-			<div class="col last span-4 nudge-2">
-						<input type="submit" name="store" value="Update data" id="store" />
-			</div>
-		</div>
-		
-		
-		<div class="field no-border">
-			<div class="col span-2">
-				<label for="backup">Download project backup</label>
-			</div>
-			<div class="col last span-4">
-				<p> You can download a full copy of your project at Claris, just to be safe, or to play magic with it.</p>
-				<a href='#'>download</a>
-			</div>
-			<div class="col last span-2">
-				<label for="delete">Delete project</label>
-			</div>
-			<div class="col last span-4">
-				<p> Deleting your project clears all data fromo our servers, including stories, people, and SVN. Of course this action can't be reversed, so be very careful.</p>
-				<a href='#'>delete project</a>
-			</div>
-		</div>
-		
-	</form>
 </div>

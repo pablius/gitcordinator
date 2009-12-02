@@ -1,63 +1,65 @@
-﻿<?
+<?
 /* Dashboard fields update 
 - Here we update project name or sprint goal.
 */
-
+$ari->popup=true;
+/*
 if (
 	($project->get('user')->id() != $ari->user->id())
 	||
-	(!isset($_GET['field']))
+	(!isset($_POST['field']))
 	||
-	(!isset($_GET['value']))
+	(!isset($_POST['value']))
 	)
 {
-	throw new OOB_exception('', "403", 'Not allowed');	
+	throw new OOB_exception('User not allowed to change goal or project name', "403", 'Not allowed',true);	
 }
+*/
+$_POST['value'] = trim($_POST['value']);
+$result = '';
 
-$result = false;
-
-switch ($_GET['field'])
+switch ($_POST['field'])
 {
-	case 'project':
+	case 'editable_project_name':
 	{
-		$project->set('name',$_GET['value']);
+		$name = $project->name();
+		$project->set('name',$_POST['value']);
 		if ($project->store())
 		{
-			$result = true;
+			$result = $project->name();
+		}
+		else
+		{
+			$result = $name;
 		}
 		break;
 	}
 	
-	case 'goal':
+	case 'editable_goal':
 	{
 		$sprint = $project->current_sprint();
-		$sprint->set('goal',$_GET['value']);
+		$name = $sprint->name();
+		$sprint->set('goal',$_POST['value']);
 		if ($sprint->store())
 		{
-			$result = true;
+			$result = $sprint->name();
+		}
+		else
+		{
+			$result = $name;
 		}
 		break;
 	}
 	
 	default:
 	{
-		throw new OOB_exception('', "404", 'Data missmatch');		
+		throw new OOB_exception(var_export($_POST,true), "501", 'Data missmatch',true);		
 		break;
 	}
 
 
 }
 
-// cambiar por js
-if ($result)
-{
-	echo 'ok';
-}
-else
-{
-	echo 'fail';
-}
-
-
+echo trim($result);
  
 ?>

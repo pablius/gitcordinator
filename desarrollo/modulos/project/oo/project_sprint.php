@@ -8,7 +8,7 @@ class project_sprint extends OOB_model_type
 		'start' 					=> 'object-Date',
 		'finish' 					=> 'object-Date',
 		'id_project' 				=> 'object-project_project',
-		'goal'						=> 'isClean,isCorrectLength-0-9999',
+		'goal'						=> 'isClean,isCorrectLength-1-9999',
 		'eval_meeting_result'		=> 'isClean,isCorrectLength-0-9999',
 		'id_kind'					=> 'object-project_sprint_kind',
 		'number'					=> 'isInt',
@@ -69,7 +69,14 @@ class project_sprint extends OOB_model_type
 	
 	public function number()
 	{
-		return $this->get('number'); 
+		if ($this->id_kind != 1)
+		{
+			return $this->get('kind')->name(); 
+		}
+		else
+		{
+			return $this->get('number'); 
+		}
 	}
 	
 	public function total_estimate()

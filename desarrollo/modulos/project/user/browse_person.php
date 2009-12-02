@@ -10,10 +10,17 @@ if (!isset($handle[2]) || !oob_validatetext::isClean($handle[2]))
 	exit;
 }
 
+if (!$browse_person = project_person::from_name($handle[2],$project))
+{
+	header( "Location: " . $ari->get('webaddress') . '/project/browse');
+	exit;
+}
+
+
 $filtros = array();
 $filtros[] = array("field"=>"status","type"=>"list","value"=>1);
 $filtros[] = array("field"=>"project","type"=>"list","value"=>$project->id());
-$filtros[] = array("field"=>"asigned::twitter_user","type"=>"string","value"=>$handle[2]);
+$filtros[] = array("field"=>"asigned::id","type"=>"list","value"=>$browse_person->id());
 $results = project_story::getFilteredList(false, false, false, false, $filtros);
 
 if (!$results)
@@ -24,14 +31,14 @@ if (!$results)
 else
 {
 
-	$person = project_person::create_new_person($handle[2],$project);
-	$ari->t->assign('name',$person->name());
+	$ari->t->assign('name',$browse_person->name());
 	
 	
 	$s = 0;
 	foreach ($results as $story)
 	{
 		$stories[$s]['number'] = $story->number();
+		$stories[$s]['text_class'] = $story->get('estimate')->get('css');
 		$stories[$s]['name'] = $story->name();
 		$stories[$s]['sprint'] = $story->get('sprint')->number();
 		$stories[$s]['tags'] = $story->tags();
@@ -44,6 +51,6 @@ else
 
 $ari->t->assign('stories',$stories);
 
-$ari->t->display($ari->module->usertpldir(). DIRECTORY_SEPARATOR . "browse_tag.tpl");
+$ari->t->display($ari->module->usertpldir(). DIRECTORY_SEPARATOR . "browse_person.tpl");
  
 ?>

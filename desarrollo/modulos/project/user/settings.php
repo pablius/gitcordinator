@@ -4,7 +4,7 @@ $ari->t->caching = false;
 $ari->t->force_compile = true;
 $ct = new OOB_cleantext();
 
-$speeds = project_sprint_speed::getList();
+$speeds = project_sprint_speed::getList(false,false,'nombre');
 
 $speed_array = array();
 $s = 0;
@@ -13,15 +13,18 @@ foreach ($speeds as $speed)
 	$speed_array[$speed->id()] = $speed->name();
 }
 
-if (($project->get('user')->id() != $ari->user->id()))
+/*if (($project->get('user')->id() != $ari->user->id()))
 {
 	throw new OOB_exception('', "403", 'Not allowed');	
-}
+}*/
 
 // store
 if (count ($_POST))
 {
-	$project->set ('name', $_POST['name']);
+	if (isset ($_POST['name']))
+	{
+		$project->set ('name', $_POST['name']);
+	}
 	
 	if (!isset ($_POST['repo_local']) || !in_array($_POST['repo_local'],array(0,1)))
 	{
@@ -40,6 +43,7 @@ if (count ($_POST))
 	
 	if($project->store())
 	{
+		project_notification::notify($person, 'Project settings saved.',new project_notification_type(1));
 		header( "Location: " . $ari->get('webaddress') . '/project/dashboard');
 		exit;
 	}

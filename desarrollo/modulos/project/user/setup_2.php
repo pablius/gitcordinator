@@ -1,7 +1,33 @@
 ﻿<?
 $ct = new OOB_cleantext();
-$ari->db->startTrans();
+$ari->t->catching = false;
+$ari->t->force_compile = true;
 
+// we send them back to setup 1
+if (!isset($_POST['name']))
+{
+	header( "Location: " . $ari->get('webaddress') . '/project/setup/1');
+	exit;
+}
+
+// availability name check
+if (isset($_POST['availability']))
+{
+	$ari->popup = true;
+	$result["data"] = array();
+	$result["success"] = project_project::is_available($_POST['name']);
+	
+	// RESULTADO
+	$obj_comunication = new OOB_ext_comunication();
+	$obj_comunication->set_message("");
+	$obj_comunication->set_code("200");
+	$obj_comunication->set_data($result);
+
+	$obj_comunication->send(true,true);	
+	exit;
+}
+
+$ari->db->startTrans();
 // we try to create the project with the given name, if we fail, we send the user back to step 1 (it should never happen, because we are validating it with js in the previous screen
 $new_project = new project_project();
 $new_project->set('name','Edit your project name');
@@ -78,12 +104,17 @@ else
 		$ari->db->FailTrans();
 	}
 	
+	if (!$ari->db->completeTrans())
+	{
+		throw new OOB_exception('PROJECT SCREWED', "501", 'It seems like we screwed up with you. Your project was created, but something else failed. Our tech team is being notified as you read.', true);
+	}
+	
 }
 
-$ari->db->completeTrans();
+
 
 $ari->t->assign('url', $ct->dropHTML($_POST['name']) . '.clarisapp.com');
-$ari->t->assign('user', $ct->dropHTML($ari->user->get('uname'));
+$ari->t->assign('user', $ct->dropHTML($ari->user->get('uname')));
 $ari->t->display($ari->module->usertpldir(). DIRECTORY_SEPARATOR . "setup_2.tpl");
  
 ?>

@@ -1,0 +1,74 @@
+-------------- PROYECTO
+person (twitter, minibio, web, user_id, project_id)
+project (nombre, sprint_speed, importance_rate, url_svn, manager)
+sprint (id, fecha_inicio, fecha_cierre, project_id, goal => text, eval_meeting_result => TEXT)
+story (status, relevance, estimate, demo, description, asigned_to created_by, datetime, sprint_id)  (PROJECT_ID?)
+comment (usr, msg,file,line,history)
+
+tag (tag, id, object, project_id) (object can be history or commit)
+
+commit (id, commit_nr, date, msg, user, project_id)
+commit_files (commit_id,commit_nr, file)
+commit_story (ommit_id, story)
+
+daily_scrum(sprint_id,date_time,user,yesterday,today,blocks)
+
+
+--------------- LISTA DE CARACT
+- login
+- config the project / sprints (nombre, svn, velocidad, relevance factor)
+- new history
+- new simple history (text process)
+- new user
+- invite user (que pasa si el usuario rechaza la invitación??)
+- send invite mail
+- create account from invite
+- people list
+- update user data
+- dashboard
+- edit history (in the dashboard)
+- drag and drop history from dash panels
+- view history
+- add comment
+- delete comment
+- tag cloud
+- pending tasks (per user, per tag)
+- messages list
+- add message
+- delete message
+- new sprint
+- sprints list
+- sprint tasks list
+- new daily scrum para el usuario
+- daily scrums list por día
+
+MARTES DEMO
+--> setups 1,2,3
+--> new simple history
+--> people list con los botones de invite
+--> dashboard (pending review)
+--> update an story
+--> tag cloud
+--> user cloud
+--> navegar por tag/user/sprint
+
+--> ver una story
+--> add comment en una story.
+
+dash -> add story, move, new_sprint
+people list -> invites
+- config the project / sprints (nombre, svn, velocidad, relevance factor)
+- new sprint
+- sprints list
+
+
+Para las horas y el grafico...
+en el daily scrum, q salgan todas las tareas pendientes que el usuario tiene, con una columna con las horas que le faltan y pueda hacer click y editarla en el momento.
+
+Para future sprints
+-> en el dash limitar la cantidad de storyes a 20 o 30, y poner un link al pie q diga ir al pb completo. Ahi mostrar una division cada X cantidad de effortpoints con las fechas "estimadas" de los proximos sprints.
+
+15hs- av lacroze 2252 - 1ro A. - Tel: 15-6-288-4614 - Patricio Jurado	
+
+
+svn checkout https://remoteclaris.googlecode.com/svn/trunk/ remoteclaris --username pablius5k

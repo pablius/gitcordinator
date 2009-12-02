@@ -7,6 +7,8 @@ $ari->t->force_compile = true;
 
 $ari->t->assign('sprint_number',$project->current_sprint()->number());
 $ari->t->assign('sprint_goal',$project->current_sprint()->name());
+$ari->t->assign('sprint_start_date',$project->current_sprint()->get('start')->format("%b %e"));
+$ari->t->assign('sprint_end_date',$project->current_sprint()->get('finish')->format("%b %e"));
 
 // get stories for unplaned
 $unplaned_items = array();
@@ -17,6 +19,7 @@ if ($unplaned = project_story::getRelated($project->unplaned(),false,'relevance'
 	{
 		$unplaned_items[$u]['number'] = $u_story->number();
 		$unplaned_items[$u]['relevance'] = $u_story->get('relevance');
+		$unplaned_items[$u]['text_class'] = $u_story->get('estimate')->get('css');
 		$unplaned_items[$u]['name'] = $u_story->name();
 		$unplaned_items[$u]['asigned'] = $u_story->asigned()->name();
 		$unplaned_items[$u]['tags'] = $u_story->tags();	
@@ -36,6 +39,7 @@ if ($pb = project_story::getRelated($project->product_backlog(),false,'relevance
 	{
 		$pb_items[$p]['number'] = $story->number();
 		$pb_items[$p]['relevance'] = $story->get('relevance');
+		$pb_items[$p]['text_class'] = $story->get('estimate')->get('css');
 		$pb_items[$p]['name'] = $story->name();
 		$pb_items[$p]['asigned'] = $story->asigned()->name();
 		$pb_items[$p]['tags'] = $story->tags();
@@ -54,6 +58,7 @@ if ($cb = project_story::getRelated($project->current_sprint(),false,'relevance'
 	{
 		$current_items[$c]['number'] = $story->number();
 		$current_items[$c]['relevance'] = $story->get('relevance');
+		$current_items[$c]['text_class'] = $story->get('estimate')->get('css');
 		$current_items[$c]['name'] = $story->name();
 		$current_items[$c]['asigned'] = $story->asigned()->name();
 		$current_items[$c]['tags'] = $story->tags();

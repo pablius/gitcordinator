@@ -1,5 +1,4 @@
-﻿<?
-
+<?
 global $ari;
 global $project;
 
@@ -7,7 +6,7 @@ $handle = $ari->url->getVars();
 // perspective for logued in users
 $ari->perspective = new oob_perspective ('pp');
 
-$ari->perspective->template->assign('message',var_export($handle,true));
+//$ari->perspective->template->assign('message',var_export($handle,true));
 
 $active_dashboard=false;
 $active_browse=false;

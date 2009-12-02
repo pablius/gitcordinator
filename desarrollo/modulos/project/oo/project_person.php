@@ -5,7 +5,7 @@ class project_person extends OOB_model_type
 
 	static protected $public_properties = array(
 	
-		'twitter_user' 			=> 'isClean,isCorrectLength-1-255',
+		'twitter_user' 			=> 'isClean,isCorrectLength-2-255',
 		'added' 				=> 'object-Date',
 		'bio'					=> 'isClean,isCorrectLength-0-500',
 		'url' 					=> 'isClean,isCorrectLength-0-500',
@@ -40,8 +40,10 @@ class project_person extends OOB_model_type
 		global $project;
 		if ($id < 1)
 		{
-			$this->twitter_user = 'unassigned';
-			$this->id_project = $project->id();
+			$this->set('twitter_user','unassigned');
+			$this->set('project',$project);
+			$this->id = -1;
+			$this->status = 1;
 		}
 		else
 		{
@@ -54,6 +56,12 @@ class project_person extends OOB_model_type
 	{
 		global $ari;
 		// we check if there is an user with that twitter_user in the project, if so, return that user, else, create a new one, and return.
+		
+		if ($twitter_user == 'unassigned')
+		{
+			return new project_person (-1);
+		}
+		
 		$string = $ari->db->qMagic($twitter_user);
 		$id_project = $ari->db->qMagic($project->id());
 		
@@ -98,12 +106,11 @@ class project_person extends OOB_model_type
 		// we check if there is an user with that twitter_user in the project, if so, return that user, else, create a new one, and return.
 		$string = $ari->db->qMagic($twitter_user);
 		$id_project = $ari->db->qMagic($project->id());
+	
 		
-		$result = static::getList(false, false, false, false, false, false, false, "AND twitter_user = $string and id_project = $id_project");
-		
-		if ($result != false && count($result) == 1)
+		if ($result = project_person::from_name($twitter_user, $project))
 		{
-			return $result[0];
+			return $result;
 		}
 		else
 		{
@@ -133,7 +140,7 @@ class project_person extends OOB_model_type
 	
 	static public function exists($user)
 	{
-		global $ari;
+		global $ari, $project;
 			
 		if (!is_a($user,'oob_user'))
 		{
@@ -148,8 +155,19 @@ class project_person extends OOB_model_type
 		}
 		else
 		{
-			return false;
+			if ($result && is_a($project,'project_project'))
+			{
+				foreach ($result as $person)
+				{
+					if ($person->get('project')->id() == $project->id())
+					{
+						return $person;
+					}
+				}
+			}
 		}
+		
+		return false;
 	}
 	
 	protected  function isDuplicated()
@@ -183,12 +201,81 @@ class project_person extends OOB_model_type
 
 	public function delete()
 	{
-		// we delete the oob_user first
-		$this->get('user')->delete();
+		global $ari;
+		$ari->db->startTrans();
 		
-		return parent::delete();
+		// if we have ONLY ONE person linked to a user, we delete the user
+		if ($this->get('user')->id() > 0 && project_person::getRelated($this->get('user'),true) == 1)
+		{
+			if (!$this->get('user')->delete())
+			{
+				$ari->db->failTrans();
+			}
+		}
 		
+		
+		$filtros = array();
+		$filtros[] = array("field"=>"status","type"=>"list","value"=>1);
+		$filtros[] = array("field"=>"project","type"=>"list","value"=>$this->get('project')->id());
+		$filtros[] = array("field"=>"asigned::id","type"=>"list","value"=>$this->id());
+		if ($stories = project_story::getFilteredList(false, false, false, false, $filtros))
+		{
+			$person = new project_person(-1); //project_person::exists($this->get('project')->get('user'));
+			
+			foreach ($stories as $story)
+			{
+				$story->set('asigned', $person);
+				if (!$story->store())
+				{
+					$ari->db->failTrans();
+				}
+			}
+		
+		}
+		
+		if(!parent::delete())
+		{
+			$ari->db->failTrans();
+		}
+		
+		return $ari->db->completeTrans();
 	}
+	
+	//@optimize: Magic to have all object synched with one user. (the user thinks he has only one profile, and we don't have to make complex magic tricks for projects)
+	public function synchronize()
+	{
+		global $ari;
+		
+		// we search for all other people that are linked to the same oob_user
+		
+		// foreach person, we set the same values than the ones in this object 
+	
+	}
+	
+	// add synch code inside the store
+	public function store()
+	{
+		
+		$ct = new OOB_cleantext();
+		$twitter_user = $ct->dropHTML($this->name());
+		if ($twitter_profile = simplexml_load_string(@file_get_contents("http://twitter.com/users/show/{$twitter_user}.xml") ))
+		{
+			$this->set ('bio', $ct->dropHTML($twitter_profile->description));
+			$this->set ('picture', $ct->dropHTML($twitter_profile->profile_image_url));
+			$this->set ('url', $ct->dropHTML($twitter_profile->url));
+		}
+	
+		
+		if (parent::store())
+		{
+			$this->synchronize();
+			return true;
+		}
+		
+		return false;
+	
+	}
+	
 	
 
 	public function name()

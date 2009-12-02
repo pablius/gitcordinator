@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Templates</title>
+	<link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="master" charset="utf-8">
+</head>
+
+<body>
+
+<div id="session">
+	<ul>
+		<li><a href="upgrade.html" class="ok">&laquo; upgrade your account</a></li>
+		<li><a href="profile.html">rodrigogalindez</a></li>
+		<li><a href="people.html">people</a></li>
+		<li><a href="project-settings.html">project settings</a></li>
+		<li><a href="logout.html">logout</a></li>
+	</ul>
+</div>
+
+<div id="wrapper" class="span-12">
+	<h1><span class="editable" title="Click to edit">Polaris</span></h1>
+	
+	<div id="nav">
+		<ul>
+			<li><a href="" class="active">Stories</a></li>
+			<li><a href="">Messages</a></li>
+			<li><a href="">Metrics</a></li>
+		</ul>
+	</div>
+	
+	<div id="inner-wrapper">
+		<div id="page-header">
+			<h2>Stories</h2>
+			
+			<ul>
+				<li><a href="">Add new story</a></li>
+				<li><a href="">Browse by tags</a></li>
+			</ul>
+		</div>
+		
+		<div id="content-wrapper">			
+			<h3>Common HTML elements</h3>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+			<h4>Y no te olvides nunca qué&hellip;</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+			<ul>
+				<li><p>Simple list item</p></li>
+				<li><p><a href="">Another simple list item</a></p></li>
+				<li><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></li>
+			</ul>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+			<hr />			
+			
+			<h3>Forms</h3>
+			
+			<p>A simple form.</p>
+			
+			<form action="forms_submit" method="get" accept-charset="utf-8">
+				<div class="field">
+					<div class="col span-2">
+						<label for="status">Status</label>
+					</div>
+					<div class="col last span-6">
+						<select id="status" name="status">
+							<option>Start</option>
+							<option>Finish</option>
+							<option>Deliver</option>
+							<option>Accept</option>
+							<option>Cancel</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<span class="label">Sex</span>
+					</div>
+					
+					<div class="col last span-6">
+						<input type="checkbox" name="sex" value="" id="male" class="checkbox" /><label for="male" class="checkbox">Male</label>
+						<input type="checkbox" name="sex" value="" id="female" class="checkbox" /><label for="female" class="checkbox">Female</label>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<span class="label">Drink</span>
+					</div>
+					
+					<div class="col last span-6">
+						<input type="radio" name="drink" value="" id="coca" class="radio" /><label for="coca" class="radio">Coca-Cola</label>
+						<input type="radio" name="drink" value="" id="pepsi" class="radio" /><label for="pepsi" class="radio">Pepsi</label>
+					</div>
+				</div>
+				<div class="field">
+					<div class="col span-2">
+						<label for="relevance">Relevance</label>
+						<p class="tooltip">A simple description of the label</p>
+					</div>
+					<div class="col last span-6">
+						<input type="text" name="relevance" value="" id="relevance" />
+						<p class="tooltip">For example: 100</p>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<label for="estimate">Estimate</label>
+					</div>
+					<div class="col last span-6">
+						<input type="text" name="estimate" value="" id="estimate" />
+						<p class="tooltip">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<label for="how-to-demo">How to demo</label>
+						<p class="tooltip">One line length</p>
+					</div>
+					<div class="col last span-6">
+						<textarea name="how-to-demo" id="how-to-demo" rows="10" cols="10"></textarea>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col span-2">
+						<label for="description">Description</label>
+					</div>
+					<div class="col last span-6">
+						<textarea name="description" id="description" rows="10" cols="10"></textarea>
+					</div>
+				</div>
+				
+				<div class="field">
+					<div class="col last span-6 nudge-2">
+						<p class="submit"><input type="submit" name="some_name" value="Save" id="some_name" class="submit" /> or <a href="">dismiss</a></p>
+						<p>More information, if needed, goes here.</p>
+					</div>
+				</div>
+			</form>
+
+			<hr />			
+			
+			<h3>Module: Story</h3>
+			
+			<p>Stories are build using a series of <code>DIV</code>s and <code>UL</code>s.</p>
+			
+			<div style="width: 220px">
+			<div class="story">
+				<div class="story-actions">
+					<ul>
+						<li><a href="">Move</a></li>
+						<li><a href="">Trash</a></li>
+						<li><a href="">Edit</a></li>
+					</ul>
+				</div>
+				
+				<div class="story-description">
+					<h4 class="medium">Login page needs realign</h4>
+					
+					<ul>
+						<li><p><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></p></li>
+					</ul>
+				</div>
+				
+				<div class="story-id">
+					<span>12208</span>
+				</div>
+			</div>
+			</div>
+			
+			<!-- <div class="story">
+				<div class="story-meta">
+					<ul>
+						<li class="priority"><a href="">3</a></li>
+					</ul>
+				</div>
+				
+				<div class="story-description">
+					<div class="story-title">
+						<h4 class="medium"><span class="editable" title="Click to edit">Login page needs remember me box</span></h4>
+						
+						<ul>
+							<li><p><a href="" class="drag-button" title="Drag this story">Click to drag</a></p></li>
+						</ul>
+					</div>
+					
+					<div class="story-details">
+						<ul>
+							<li><p><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a></p></li>
+							<li><p><a href="" class="story-edit-button" title="Edit this story">Edit</a></p></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="story">
+				<div class="story-meta">
+					<ul>
+						<li class="priority"><a href="">128</a></li>
+					</ul>
+				</div>
+				
+				<div class="story-description">
+					<div class="story-title">
+						<h4 class="small"><span class="editable" title="Click to edit">Recode page templates</span></h4>
+						
+						<ul>
+							<li><p><a href="" class="drag-button" title="Drag this story">Click to drag</a></p></li>
+						</ul>
+					</div>
+					
+					<div class="story-details">
+						<ul>
+							<li><p><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a></p></li>
+							<li><p><a href="" class="story-edit-button" title="Edit this story">Edit</a></p></li>
+						</ul>
+						
+						<form action="forms_submit" method="get" accept-charset="utf-8">
+							<div class="field">
+								<div class="col span-1">
+									<label for="status">Status</label>
+								</div>
+								<div class="col last span-3">
+									<select id="status" name="status">
+										<option>Start</option>
+										<option>Finish</option>
+										<option>Deliver</option>
+										<option>Accept</option>
+										<option>Cancel</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="relevance">Relevance</label>
+								</div>
+								<div class="col last span-3">
+									<input type="text" name="relevance" value="" id="relevance" />
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="estimate">Estimate</label>
+								</div>
+								<div class="col last span-3">
+									<input type="text" name="estimate" value="" id="estimate" />
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="how-to-demo">How to demo</label>
+								</div>
+								<div class="col last span-3">
+									<textarea name="how-to-demo" id="how-to-demo" rows="10" cols="10"></textarea>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-1">
+									<label for="description">Description</label>
+								</div>
+								<div class="col last span-3">
+									<textarea name="description" id="description" rows="10" cols="10"></textarea>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="col span-3 nudge-1">
+									<p class="submit"><input type="submit" name="some_name" value="Save" id="some_name" class="submit" /> or <a href="">dismiss</a></p>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div> -->
+			
+			<div class="story z hide">
+				<div class="meta">
+					<ul>
+						<li class="priority"><a href="">11</a></li>
+						<li><a href="">Accept</a></li>
+					</ul>
+				</div>
+				
+				<div class="description">
+					<div class="title">
+						<h4 class="large"><span class="editable" title="Click to edit">Cookies not working in homepage</span></h4>
+					</div>
+					
+					<div class="details">
+						<ul>
+							<li><input type="text" name="some_name" value="@gonzalocasas #design #layout #interface" id="some_name" /><input type="submit" name="some_name" value="Save" id="some_name" class="submit" style="margin-left:5px" /></li>
+							<li><p class="tooltip">Add new persons using @ and new tags using #</p></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="story hide">
+				<div class="meta">
+					<ul>
+						<li class="priority"><a href="">11</a></li>
+						<li><a href="">Accept</a></li>
+					</ul>
+				</div>
+				
+				<div class="description">
+					<div class="title">
+						<h4 class="medium"><span class="editable" title="Click to edit">Login page needs remember me box</span></h4>
+					</div>
+					
+					<div class="details">
+						<ul>
+							<li><p><a href="" title="View stories for @gonzalocasas">@gonzalocasas</a> <a href="" title="View stories tagged as 'interface'">#interface</a> <a href="" title="View stories tagged as 'design'">#design</a> <a href="" title="View stories tagged as 'layout'">#layout</a> <a href="" class="quick-edit" title="Click to edit persons and tags for this story">quick edit</a></p></li>
+						</ul>
+						
+						<table class="common small">
+							<tr>
+								<th><label for="relevance">Relevance</label></th>
+								<td><input type="text" name="relevance" value="" id="relevance" /></td>
+							</tr>
+							<tr>
+								<th><label for="estimate">Estimate</label></th>
+								<td><input type="text" name="estimate" value="" id="estimate" /></td>
+							</tr>
+							<tr>
+								<th><label for="how-to-demo">How to demo</label></th>
+								<td><textarea name="how-to-demo" id="how-to-demo" rows="10" cols="10"></textarea></td>
+							</tr>
+							<tr>
+								<th><label for="description">Description</label></th>
+								<td><textarea name="description" id="description" rows="10" cols="10"></textarea></td>
+							</tr>
+							<tr>
+								<th />
+								<td><p><input type="submit" name="some_name" value="Save" id="some_name" style="width: auto; "/> or <a href="">dismiss</a></p></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<hr />
+			
+			<h3>Module: New Story</h3>
+			
+			<div class="new-story">
+				<form action="ui_submit" method="get" accept-charset="utf-8">
+					<div class="field">
+						<div class="col span-6">
+							<input type="text" name="some_name" value="" id="some_name" />
+							<p class="tooltip">Example: "Redesign login form @lebowsky #inteface #design". <a href="">More help</a>.</p>
+						</div>
+				
+						<div class="col last span-3">
+							<input type="submit" name="some_name" value="Add story" id="some_name" class="submit" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<div id="footer-wrapper" style="display: none">
+		<div id="footer">
+			<div class="section">
+				<h3>About</h3>
+				
+				<ul>
+					<li><a href="">Blog</a></li>
+					<li><a href="">Contact</a></li>
+					<li><a href="">Privacy Policy</a></li>
+				</ul>
+			</div>
+			
+			<div class="section">
+				<h3>Help</h3>
+				
+				<ul>
+					<li><a href="">FAQ</a></li>
+					<li><a href="">Support</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
